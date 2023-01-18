@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { useHistory, useNavigate } from "react-router-dom";
 
 
 function NavBar({user, setUser}) {
+    
 const history = useHistory()
-// console.log(history)
     function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
@@ -11,17 +12,22 @@ const history = useHistory()
       }
 
 
-    function routeChange() {
-        console.log('changing route')
-        // return <Redirect to='/addpet' />
+    function addPetRoute() {
+        let path = '/addpet'
+        history.push(path)
+    }
+
+    function goHomeRoute() {
+        let path = '/'
+        history.push(path)
     }
     return ( 
         <div>
             <div>
                 <p>Welcome {user.name}!</p>
-                <p>Logo</p>
+                <p onClick={goHomeRoute}>Logo</p>
                 <p>My Account</p>
-                <button onClick={routeChange}>ADD PET</button>
+                <button onClick={addPetRoute}>ADD PET</button>
                 <button onClick={handleLogout}>LOG OUT</button>
             </div>
         </div>

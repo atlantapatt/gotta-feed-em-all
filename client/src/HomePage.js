@@ -1,7 +1,14 @@
-function HomePage() {
+function HomePage({myPets}) {
+ let mappedPets = myPets.map((pet) => {
+    return (
+        <div>
+            <p>{pet.name}</p>
+        </div>
+    )
+ })   
     return(
         <div>
-            HOMEPAGE
+            {mappedPets}
         </div>
     )
 }

@@ -10,3 +10,15 @@ Family.create([
         last_name: 'Patterson'
     }
 ])
+
+Type.create([
+    {
+        pet_type: "Dog"
+    },
+    {
+        pet_type: "Cat"
+    },
+    {
+        pet_type: "Other"
+    }
+])

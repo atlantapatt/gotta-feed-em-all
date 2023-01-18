@@ -9,9 +9,8 @@ import AddPet from './AddPet';
 
 function App() {
   const [user, setUser] = useState(null)
-  console.log(user)
-
-    // let history = useHistory()
+  const [myPets, setMyPets] = useState([])
+  console.log(myPets)
 
 
     useEffect(() => {
@@ -34,16 +33,16 @@ function App() {
 
   return (
   <div>
-    <NavBar setUser={setUser} user={user} />
+    <NavBar setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/test'>
         <Test />
       </Route>
       <Route exact path='/'>
-        <HomePage  />
+        <HomePage myPets={myPets}  />
       </Route>
       <Route exact path='/addpet'>
-        <AddPet />
+        <AddPet myPets={myPets} setMyPets={setMyPets} />
       </Route>
       <Route exact path='/login'>
         <Login setUser={setUser} />
