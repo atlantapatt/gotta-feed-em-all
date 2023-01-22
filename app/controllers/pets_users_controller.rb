@@ -5,6 +5,11 @@ class PetsUsersController < ApplicationController
         render json: pet_user
     end
 
+    def show
+        pet_user = PetUser.all
+        render json: pet_user
+    end
+
     private
 
     def pet_user_params

@@ -9,11 +9,14 @@ import AddPet from './AddPet';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [myPets, setMyPets] = useState()
-  console.log(myPets)
+  const [myPets, setMyPets] = useState([])
+  const [newPet, setNewPet] = useState()
+  
+  
+// console.log(pets)
   console.log(user)
 
-
+  
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
@@ -24,10 +27,11 @@ function App() {
       });
     },[]);
 
-    function handleAddPet(newPet) {
-      setMyPets([...myPets, newPet])
+    function handleAddPet(pet) {
+      setMyPets([...myPets, pet])
+      
     }
-
+console.log(myPets)
     console.log(user)
 
   // require('react-dom');
@@ -48,7 +52,7 @@ function App() {
         <HomePage user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
-        <AddPet myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
+        <AddPet setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
       </Route>
       <Route exact path='/login'>
         <Login setUser={setUser} />

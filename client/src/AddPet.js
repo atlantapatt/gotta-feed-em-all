@@ -1,32 +1,70 @@
 import { useState } from "react";
+import { useHistory, useNavigate } from "react-router-dom";
 
-function AddPet({myPets, handleAddPet, user}) {
+
+function AddPet({setNewPet, newPet, myPets, handleAddPet, user}) {
     const [petType, setPetType] = useState(1)
     const [petName, setPetName] = useState("")
+    const history = useHistory()
+    // const [petID, setPetID] = useState(newPet.id)
 
+    // console.log(petID)
+    
+    // console.log(newPet.id)
     console.log(petType)
+
+    function goHomeRoute() {
+        let path = '/'
+        history.push(path)
+    }
+
     function onChange(e) {
         setPetType(e.target.value)
     }
     //figure out how to submit and keep saved to user
+function petPost() {
+    fetch("/pet", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: petName,
+            pet_type_id: petType,
+            family_id: 1,
+
+        }),
+    }).then((r) => {
+        r.json().then((pet) => setNewPet(pet))
+    },[])
+}
+
+function petUser() {
+    fetch("/petuser", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            user_id: user.id,
+            pet_id: newPet.id,
+
+        }),
+    }).then((r) => {
+        r.json().then((pet) => console.log(pet))
+    },[])
+}
+
     function onSubmit(e) {
         e.preventDefault()
-        fetch("/pet", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: petName,
-                pet_type_id: petType,
-                family_id: 1,
-                users: user
-
-            }),
-        }).then((r) => {
-            r.json().then((pet) => console.log(pet))
-        })
+        petPost()
+        petUser()
+        handleAddPet(newPet)
+        setNewPet()
+        goHomeRoute()
+        window.location.reload(false);
     }
+    console.log(myPets)
     
     return ( 
         <div className="add-pet-div">

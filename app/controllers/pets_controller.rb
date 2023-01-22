@@ -9,12 +9,18 @@ class PetsController < ApplicationController
 
     def index
         pet = Pet.all
-        render json: pet, include: :users
+        render json: pet
     end
 
     def show
         user = User.find_by(id: session[:user_id])
-        pet = Pet
+        if user
+            render json: user, include: :pets
+        end
+    end
+
+    def pets
+        user = User.find_by(id: params[:id])
         if user
             render json: user, include: :pets
         end
