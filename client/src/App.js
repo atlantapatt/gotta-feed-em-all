@@ -9,26 +9,32 @@ import AddPet from './AddPet';
 
 function App() {
   const [user, setUser] = useState(null)
-  const [myPets, setMyPets] = useState([])
+  const [myPets, setMyPets] = useState()
   console.log(myPets)
+  console.log(user)
 
 
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
           response.json().then((user) => setUser(user));
-          console.log(user)
         } else {
           return <Login setUser={setUser} />
         }
       });
-    }, []);
+    },[]);
+
+    function handleAddPet(newPet) {
+      setMyPets([...myPets, newPet])
+    }
+
+    console.log(user)
 
   // require('react-dom');
   // window.React2 = require('react');
   // console.log(window.React1 === window.React2);
 
-  if (!user) return <Login setUser={setUser} />
+  if (!user) return <Login setUser={setUser} myPets={myPets} />
 
 
   return (
@@ -39,10 +45,10 @@ function App() {
         <Test />
       </Route>
       <Route exact path='/'>
-        <HomePage myPets={myPets}  />
+        <HomePage user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
-        <AddPet myPets={myPets} setMyPets={setMyPets} />
+        <AddPet myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
       </Route>
       <Route exact path='/login'>
         <Login setUser={setUser} />

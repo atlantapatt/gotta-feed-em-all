@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   get 'me', to: 'users#show'
   get 'types', to: 'types#index'
   get 'pet', to: 'pets#index'
+  get 'onlypets', to: 'pets#show'
   post 'pet', to: 'pets#create'
   post 'signup', to: 'users#create'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  delete 'pet/:id', to: 'pets#destroy'
+  delete 'user/:id', to: 'users#destroy'
 end

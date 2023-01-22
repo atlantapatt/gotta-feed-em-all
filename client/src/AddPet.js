@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AddPet({myPets, setMyPets}) {
+function AddPet({myPets, handleAddPet, user}) {
     const [petType, setPetType] = useState(1)
     const [petName, setPetName] = useState("")
 
@@ -8,7 +8,7 @@ function AddPet({myPets, setMyPets}) {
     function onChange(e) {
         setPetType(e.target.value)
     }
-
+    //figure out how to submit and keep saved to user
     function onSubmit(e) {
         e.preventDefault()
         fetch("/pet", {
@@ -19,10 +19,12 @@ function AddPet({myPets, setMyPets}) {
             body: JSON.stringify({
                 name: petName,
                 pet_type_id: petType,
+                family_id: 1,
+                users: user
 
             }),
         }).then((r) => {
-            r.json().then((pet) => setMyPets([...myPets, pet]))
+            r.json().then((pet) => console.log(pet))
         })
     }
     

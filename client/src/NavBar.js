@@ -25,6 +25,7 @@ const history = useHistory()
         <div>
             <div>
                 <p>Welcome {user.name}!</p>
+                {/* <p>Family: {user.family.last_name}</p> */}
                 <p onClick={goHomeRoute}>Logo</p>
                 <p>My Account</p>
                 <button onClick={addPetRoute}>ADD PET</button>

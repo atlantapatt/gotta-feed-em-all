@@ -39,6 +39,7 @@ function SignUpBox({setSignIn, setUser}) {
                     <label>Confirm Password</label>
                     <input id="password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
                     <br></br>
+                    <label>Name</label>
                     <input id="name" value={name} onChange={(e) => setName(e.target.value)}></input>
                     <button>Submit</button>
                     <p onClick={() => setSignIn(false)}>Already a user? Click here.</p>

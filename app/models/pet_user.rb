@@ -1,4 +1,4 @@
 class PetUser < ApplicationRecord
-    has_many :pets
-    has_many :users
+   belongs_to :pet
+   belongs_to :user
 end
