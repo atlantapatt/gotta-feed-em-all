@@ -6,17 +6,21 @@ import HomePage from './HomePage';
 import { useEffect, useState } from 'react';
 import Login from './LogInPage/Login';
 import AddPet from './AddPet';
+import SinglePetCard from './SinglePetCard';
 
 function App() {
   const [user, setUser] = useState(null)
   const [myPets, setMyPets] = useState([])
   const [newPet, setNewPet] = useState()
-  
+  const [url, setUrl] = useState('')
+
+  let petName = url.split('/').pop()
   
 // console.log(pets)
-  console.log(user)
+  console.log(myPets)
 
-  
+ 
+
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
@@ -31,8 +35,17 @@ function App() {
       setMyPets([...myPets, pet])
       
     }
+
+    let onePet = myPets.find((pet) => {
+      return pet.name == petName
+  })
+  console.log(onePet)
+
+    // let singlepet = 
 console.log(myPets)
     console.log(user)
+
+    
 
   // require('react-dom');
   // window.React2 = require('react');
@@ -49,13 +62,16 @@ console.log(myPets)
         <Test />
       </Route>
       <Route exact path='/'>
-        <HomePage user={user} myPets={myPets} setMyPets={setMyPets}  />
+        <HomePage url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
         <AddPet setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
       </Route>
       <Route exact path='/login'>
         <Login setUser={setUser} />
+      </Route>
+      <Route exact path={url}>
+        <SinglePetCard onePet={onePet}/>
       </Route>
     </Switch>
   </div>    
