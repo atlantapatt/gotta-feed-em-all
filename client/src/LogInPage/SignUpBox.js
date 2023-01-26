@@ -1,16 +1,49 @@
 import { useState } from "react"
 
-function SignUpBox({setSignIn, setUser}) {
+function SignUpBox({setSignIn, setUser, family, setFamily}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [name, setName] = useState("")
-    const [errors, setErrors] = useState([])
+    const [click, setClick] = useState(false)
+    const [familyName, setFamilyName] = useState("")
+    const [familyPassword, setFamilyPassword] = useState('')
+
+    //can't submit user and family at same time.
+    //maybe create page where a new user before creating user creates 
+    //or sets myFamily state so it is already saved when creating user
     
+    
+    
+console.log(click)
+
+// function familySubmit(e) {
+//     e.preventDefault()
+//     if (click === false ) {
+//         fetch(`/family/${familyName}`).then((response) => {
+//             if (response.ok) {
+//               response.json().then((family) => setFamily(family))
+//             }
+//         })
+//     } else {
+//         fetch("/family", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({
+//                 last_name: familyName,
+//                 password: familyPassword,
+//             }),
+//         }).then((r) => {
+//             r.json().then((family) => setFamily(family))
+//         })
+//     }
+// }
 
 
-    function onSubmit(e) {
-        e.preventDefault()
+function signUp(e) {
+    e.preventDefault()
         fetch("/signup", {
             method: "POST",
             headers: {
@@ -21,17 +54,49 @@ function SignUpBox({setSignIn, setUser}) {
                 password,
                 name,
                 password_confirmation: passwordConfirmation,
-                family_id: 1,
+                family_id: 2,
             }),
         }).then((r) => {
             r.json().then((user) => setUser(user))
         })
+}
+
+    function onSubmit() {
+        // familySubmit()
+        signUp()
+    }
+
+    function newFamily() {
+        return (
+            <div className="new-family">
+                <label>Family Name</label>
+                <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
+                {/* needs password hash in backend */}
+                <br></br>
+                <label>Family Password</label>
+                <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
+            </div>
+        )
+    }
+
+    function existingFamily(){
+        return(
+            <div className="existing-family">
+                <label>Family Name</label>
+                <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
+                {/* needs password hash in backend */}
+                <br></br>
+                <label>Family Password</label>
+                <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
+            </div>
+        )
     }
 
     return(
         <div>
             <h4>Please Sign Up</h4>
-                <form onSubmit={onSubmit}>
+            {/* <button onClick={getFamily}>TEST</button> */}
+                <form onSubmit={signUp}>
                     <label>Username</label>
                     <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/> <br></br>
                     <label>Password</label>
@@ -41,6 +106,13 @@ function SignUpBox({setSignIn, setUser}) {
                     <br></br>
                     <label>Name</label>
                     <input id="name" value={name} onChange={(e) => setName(e.target.value)}></input>
+                    <br></br>
+                    {/* <label>Create New Family</label>
+                    <input type='radio' checked={true === click} onChange={(() => setClick(!click))}></input>
+                    <label>Join Existing Family</label>
+                    <input type='radio' checked={false === click} onChange={(() => setClick(!click))}></input>
+                    <br></br>
+                    {click ? newFamily() : existingFamily()} */}
                     <button>Submit</button>
                     <p onClick={() => setSignIn(false)}>Already a user? Click here.</p>
                 </form>

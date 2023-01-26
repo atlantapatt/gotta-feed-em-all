@@ -13,6 +13,7 @@ function App() {
   const [myPets, setMyPets] = useState([])
   const [newPet, setNewPet] = useState()
   const [url, setUrl] = useState('')
+  const [family, setFamily] = useState()
 
   let petName = url.split('/').pop()
   
@@ -51,12 +52,12 @@ console.log(myPets)
   // window.React2 = require('react');
   // console.log(window.React1 === window.React2);
 
-  if (!user) return <Login setUser={setUser} myPets={myPets} />
+  if (!user) return <Login family={family} setFamily={setFamily} setUser={setUser} myPets={myPets} />
 
 
   return (
   <div>
-    <NavBar setUser={setUser} user={user}  />
+    <NavBar setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/test'>
         <Test />

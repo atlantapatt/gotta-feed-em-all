@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_224725) do
+ActiveRecord::Schema.define(version: 2023_01_25_233721) do
 
   create_table "families", force: :cascade do |t|
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
   end
 
   create_table "pet_users", force: :cascade do |t|
