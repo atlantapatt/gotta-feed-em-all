@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'types', to: 'types#index'
   get 'pet', to: 'pets#index'
   get 'onlypets', to: 'pets#show'
+  get 'family/:id', to: 'families#id'
+  get 'family/:last_name/pets', to: 'families#fPet'
   get 'family/:last_name', to: 'families#show'
   post 'pet', to: 'pets#create'
   post 'signup', to: 'users#create'

@@ -4,9 +4,22 @@ class FamiliesController < ApplicationController
         render json: families, include: :users
     end
 
+    def fPet
+        family = Family.find_by(last_name: params[:last_name])
+        pets = Pet.where(family_id: family.id)
+        if family
+            render json: pets, except: [:name]
+        end
+    end
+
     def create
         family = Family.create(family_params)
         render json: family, status: :created
+    end
+
+    def id
+        family = Family.find_by(id: params[:id])
+        render json: family, status: :ok
     end
 
     def show

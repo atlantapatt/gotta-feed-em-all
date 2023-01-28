@@ -16,6 +16,7 @@ function App() {
   const [newPet, setNewPet] = useState()
   const [url, setUrl] = useState('')
   const [family, setFamily] = useState()
+  const [familyName, setFamilyName] = useState("")
 
   let petName = url.split('/').pop()
   
@@ -23,16 +24,30 @@ function App() {
 //users in the same family don't have the same pets
 //track user pets based on families?
 
-  console.log(myPets)
+// useEffect(() => {
+//   fetch(`/family/${user.family_id}`).then((r) => {
+//         if (r.ok) {
+//             r.json().then((family) => setFamily(family))
+//         }
+//     })
+// },[]);
 
  
-
+  useEffect(() => {
+    fetch(`/family/${familyName}/pets`).then((response) => {
+      if (response.ok) {
+        response.json().then((pets) => console.log(pets));
+      }
+    });
+  },[]);
+console.log(myPets)
+console.log(familyName)
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
           response.json().then((user) => setUser(user));
         } else {
-          return <Login setUser={setUser} />
+          return <Login familyName={familyName} setFamilyName={setFamilyName} setUser={setUser} user={user} />
         }
       });
     },[]);
@@ -71,7 +86,7 @@ console.log(myPets)
         <HomePage url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
-        <AddPet setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
+        <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
       </Route>
       <Route exact path='/login'>
         <Login setUser={setUser} />

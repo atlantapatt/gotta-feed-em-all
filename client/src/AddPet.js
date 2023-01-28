@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory, useNavigate } from "react-router-dom";
 
 
-function AddPet({setNewPet, newPet, myPets, handleAddPet, user}) {
+function AddPet({setNewPet, newPet, myPets, handleAddPet, user, family}) {
     const [petType, setPetType] = useState(1)
     const [petName, setPetName] = useState("")
     const history = useHistory()
@@ -22,6 +22,7 @@ function AddPet({setNewPet, newPet, myPets, handleAddPet, user}) {
         setPetType(e.target.value)
     }
     //figure out how to submit and keep saved to user
+    //make sure family.id doesn't error out due to null
 function petPost() {
     fetch("/pet", {
         method: "POST",
@@ -31,7 +32,7 @@ function petPost() {
         body: JSON.stringify({
             name: petName,
             pet_type_id: petType,
-            family_id: 1,
+            family_id: family.id,
 
         }),
     }).then((r) => {
