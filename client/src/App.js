@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import Login from './LogInPage/Login';
 import AddPet from './AddPet';
 import SinglePetCard from './SinglePetCard';
+import FamilySignUp from './LogInPage/FamilySignUp';
+import FamilyJoin from './LogInPage/FamilyJoin';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -17,7 +19,10 @@ function App() {
 
   let petName = url.split('/').pop()
   
-// console.log(pets)
+//finished family join start family create
+//users in the same family don't have the same pets
+//track user pets based on families?
+
   console.log(myPets)
 
  
@@ -73,6 +78,12 @@ console.log(myPets)
       </Route>
       <Route exact path={url}>
         <SinglePetCard onePet={onePet}/>
+      </Route>
+      <Route exact path='/create'>
+        <FamilySignUp />
+      </Route>
+      <Route exact path='/join'>
+        <FamilyJoin />
       </Route>
     </Switch>
   </div>    

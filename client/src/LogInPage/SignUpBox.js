@@ -6,15 +6,12 @@ function SignUpBox({setSignIn, setUser, family, setFamily}) {
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
     const [name, setName] = useState("")
     const [click, setClick] = useState(false)
-    const [familyName, setFamilyName] = useState("")
-    const [familyPassword, setFamilyPassword] = useState('')
+    
 
-    //can't submit user and family at same time.
-    //maybe create page where a new user before creating user creates 
-    //or sets myFamily state so it is already saved when creating user
+
     
     
-    
+console.log(family)
 console.log(click)
 
 // function familySubmit(e) {
@@ -54,43 +51,27 @@ function signUp(e) {
                 password,
                 name,
                 password_confirmation: passwordConfirmation,
-                family_id: 2,
+                family_id: family.id,
             }),
         }).then((r) => {
             r.json().then((user) => setUser(user))
         })
 }
 
-    function onSubmit() {
-        // familySubmit()
-        signUp()
-    }
 
-    function newFamily() {
-        return (
-            <div className="new-family">
-                <label>Family Name</label>
-                <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
-                {/* needs password hash in backend */}
-                <br></br>
-                <label>Family Password</label>
-                <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
-            </div>
-        )
-    }
+    // function newFamily() {
+    //     return (
+    //         <div className="new-family">
+    //             <label>Family Name</label>
+    //             <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
+    //             {/* needs password hash in backend */}
+    //             <br></br>
+    //             <label>Family Password</label>
+    //             <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
+    //         </div>
+    //     )
+    // }
 
-    function existingFamily(){
-        return(
-            <div className="existing-family">
-                <label>Family Name</label>
-                <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
-                {/* needs password hash in backend */}
-                <br></br>
-                <label>Family Password</label>
-                <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
-            </div>
-        )
-    }
 
     return(
         <div>

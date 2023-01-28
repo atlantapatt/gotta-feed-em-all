@@ -1,14 +1,22 @@
 import { useState } from "react"
+import FamilyChoice from "./FamilyChoice"
 import LogInBox from "./LogInBox"
+import LoginChoice from "./LoginChoice"
 import SignUpBox from "./SignUpBox"
-function Login({setUser, myPets}) {
+function Login({setUser, myPets, family, setFamily}) {
+const [signUp, setSignUp] = useState(true)
+
 const [signIn, setSignIn] = useState(false)
-    
+const [isNewFamily , setIsNewFamily] = useState(null)
+//  <LogInBox myPets={myPets} setUser={setUser} setSignIn={setSignIn} />
+/*  */
+console.log(signIn)
     return(
         <div className="login-div" >
             <header>WELCOME</header>
                 <div className="login-box">
-                    {signIn ? <SignUpBox myPets={myPets} setUser={setUser} setSignIn={setSignIn} /> : <LogInBox myPets={myPets} setUser={setUser} setSignIn={setSignIn} />}
+                    {/* {signIn ? <FamilyChoice family={family} setFamily={setFamily} isNewFamily={isNewFamily} setIsNewFamily={setIsNewFamily} setSignIn={setSignIn} /> : <LogInBox myPets={myPets} setUser={setUser} setSignIn={setSignIn} />} */}
+                    {signUp ? <LoginChoice signIn={signIn} family={family} setFamily={setFamily} isNewFamily={isNewFamily} setIsNewFamily={setIsNewFamily} setSignIn={setSignIn}  setSignUp={setSignUp} signUp={signUp} myPets={myPets} setUser={setUser} /> : <SignUpBox myPets={myPets} setUser={setUser} setSignIn={setSignIn} family={family} />}
                 </div>
         </div>
     )
