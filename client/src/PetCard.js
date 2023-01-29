@@ -5,7 +5,7 @@ import SinglePetCard from "./SinglePetCard"
 
 function PetCard({pet, url, setUrl}) {
    
-    let petName = url.split('/').pop()
+    // let petName = url.split('/').pop()
     // console.log(petName)
 
     let history = useHistory()
@@ -16,17 +16,6 @@ function PetCard({pet, url, setUrl}) {
         history.push(url)
        
     }
-
-    
-    let onePet = [pet].filter((pet) => {
-        return pet.name == petName
-    })
-console.log(onePet)
-    // let mappingPet = [pet].map((pet) => {
-    //     return (
-    //         <SinglePetCard pet={pet} />
-    //     )
-    // })
 
 
 

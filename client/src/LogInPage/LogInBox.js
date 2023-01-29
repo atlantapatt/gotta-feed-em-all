@@ -26,7 +26,7 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
         }).then((r) => {
             r.json().then((user) => setUser(user))
         })
-        setFamID(user.family_id)
+        
     }
 
     function fetchFamily() {
@@ -37,22 +37,22 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
         })
     }
 
-function handleSubmit() {
-    submitData()
-    fetchFamily()
-}
+// function handleSubmit() {
+//     submitData()
+//     fetchFamily()
+// }
 
 
-
+// onClick={(() => handleSubmit())}
     return (
         <div>
             <h4>Please Login</h4>
-                <form >
+                <form onSubmit={submitData}>
                     <label>Username</label>
                     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
                     <label>Password</label>
                     <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <button onClick={(() => handleSubmit())}>Submit</button>
+                    <button  >Submit</button>
                     <p onClick={() => setSignIn(true)}>Not a user? Click here to sign up.</p>
                 </form>
         </div>        

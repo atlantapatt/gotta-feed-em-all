@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useHistory, useNavigate } from "react-router-dom";
 
 
-function NavBar({user, setUser,setUrl}) {
+function NavBar({family, user, setUser,setUrl}) {
 
     const history = useHistory()
 
@@ -28,7 +28,7 @@ function NavBar({user, setUser,setUrl}) {
         <div>
             <div>
                 <p>Welcome {user.name}!</p>
-                 {/* get family name in to navbar */}
+                 <p>You are part of the {family.last_name} family!</p>
                 <p onClick={goHomeRoute}>Logo</p>
                 <p>My Account</p>
                 <button onClick={addPetRoute}>ADD PET</button>

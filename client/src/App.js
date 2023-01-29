@@ -9,6 +9,7 @@ import AddPet from './AddPet';
 import SinglePetCard from './SinglePetCard';
 import FamilySignUp from './LogInPage/FamilySignUp';
 import FamilyJoin from './LogInPage/FamilyJoin';
+import AddSchedule from './AddSchedule';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -24,24 +25,33 @@ function App() {
 //users in the same family don't have the same pets
 //track user pets based on families?
 
-// useEffect(() => {
-//   fetch(`/family/${user.family_id}`).then((r) => {
-//         if (r.ok) {
-//             r.json().then((family) => setFamily(family))
-//         }
-//     })
-// },[]);
-
+useEffect(() => {
+  if (user !== null) {
+  fetch(`/family/${user.family_id}`).then((r) => {
+        if (r.ok) {
+            r.json().then((family) => setFamily(family))
+        }
+    })  
+  } else {
+    return null
+  }
+},[]);
  
   useEffect(() => {
-    fetch(`/family/${familyName}/pets`).then((response) => {
+    if (user !== null) {
+      fetch(`/family/${family.last_name}/pets`).then((response) => {
       if (response.ok) {
-        response.json().then((pets) => console.log(pets));
+        response.json().then((pets) => setMyPets(pets));
       }
     });
+    }
+    
   },[]);
+
 console.log(myPets)
+console.log(family)
 console.log(familyName)
+
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
@@ -77,13 +87,13 @@ console.log(myPets)
 
   return (
   <div>
-    <NavBar setUrl={setUrl} setUser={setUser} user={user}  />
+    <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/test'>
         <Test />
       </Route>
       <Route exact path='/'>
-        <HomePage url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
+        <HomePage  url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
         <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
@@ -99,6 +109,9 @@ console.log(myPets)
       </Route>
       <Route exact path='/join'>
         <FamilyJoin />
+      </Route>
+      <Route exact path='/addschedule'>
+        <AddSchedule />
       </Route>
     </Switch>
   </div>    
