@@ -12,13 +12,13 @@ console.log(myPets.length)
 
 
 
-useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setMyPets(user.pets));
-      } 
-    });
-  },[]);
+// useEffect(() => {
+//     fetch("/me").then((response) => {
+//       if (response.ok) {
+//         response.json().then((user) => setMyPets(user.pets));
+//       } 
+//     });
+//   },[]);
 
     
   let mappedPets = myPets.map((pet) => {

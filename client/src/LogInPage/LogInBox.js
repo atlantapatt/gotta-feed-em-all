@@ -29,13 +29,13 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
         
     }
 
-    function fetchFamily() {
-        fetch(`/family/${famID}`).then((r) => {
-            if (r.ok) {
-                r.json().then((family) => setFamily(family))
-            }
-        })
-    }
+    // function fetchFamily() {
+    //     fetch(`/family/${famID}`).then((r) => {
+    //         if (r.ok) {
+    //             r.json().then((family) => setFamily(family))
+    //         }
+    //     })
+    // }
 
 // function handleSubmit() {
 //     submitData()

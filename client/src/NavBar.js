@@ -24,11 +24,19 @@ function NavBar({family, user, setUser,setUrl}) {
         setUrl('')
         
     }
+    function familyLoad() {
+        if (family !== null) {
+            return (
+                <p>You are part of the {family.last_name} family!</p>
+
+            )
+        }
+    }
     return ( 
         <div>
             <div>
                 <p>Welcome {user.name}!</p>
-                 <p>You are part of the {family.last_name} family!</p>
+                {familyLoad}
                 <p onClick={goHomeRoute}>Logo</p>
                 <p>My Account</p>
                 <button onClick={addPetRoute}>ADD PET</button>

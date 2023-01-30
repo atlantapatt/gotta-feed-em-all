@@ -16,14 +16,15 @@ function App() {
   const [myPets, setMyPets] = useState([])
   const [newPet, setNewPet] = useState()
   const [url, setUrl] = useState('')
-  const [family, setFamily] = useState()
+  const [family, setFamily] = useState([])
   const [familyName, setFamilyName] = useState("")
 
   let petName = url.split('/').pop()
   
-//finished family join start family create
+
 //users in the same family don't have the same pets
 //track user pets based on families?
+//sometimes setFamily and setPets doesn't set on login
 
 useEffect(() => {
   if (user !== null) {
@@ -35,22 +36,24 @@ useEffect(() => {
   } else {
     return null
   }
-},[]);
+},[user]);
  
   useEffect(() => {
     if (user !== null) {
       fetch(`/family/${family.last_name}/pets`).then((response) => {
       if (response.ok) {
         response.json().then((pets) => setMyPets(pets));
+      } else {
+        return null
       }
     });
     }
     
-  },[]);
+  },[family]);
 
 console.log(myPets)
 console.log(family)
-console.log(familyName)
+console.log(user !== null)
 
     useEffect(() => {
       fetch("/me").then((response) => {
@@ -111,7 +114,7 @@ console.log(myPets)
         <FamilyJoin />
       </Route>
       <Route exact path='/addschedule'>
-        <AddSchedule />
+        <AddSchedule onePet={onePet} />
       </Route>
     </Switch>
   </div>    
