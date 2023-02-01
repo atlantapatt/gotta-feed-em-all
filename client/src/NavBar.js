@@ -10,6 +10,7 @@ function NavBar({family, user, setUser,setUrl}) {
         fetch("/logout", {
           method: "DELETE",
         }).then(() => setUser(null));
+        history.push('/')
       }
 
 

@@ -26,6 +26,16 @@ function App() {
 //track user pets based on families?
 //sometimes setFamily and setPets doesn't set on login
 
+//in schedules.js
+    //have onePet include schedules
+    //two filters, one AM one PM
+    //sort so that Monday is first and Sunday last
+    //map filtered and sorted data into designated columns
+    //names of assigned user gets displayed under day/time
+    //when fed displayed user button gets color
+
+    //can reset week button reset backend for multiple data
+
 useEffect(() => {
   if (user !== null) {
   fetch(`/family/${user.family_id}`).then((r) => {

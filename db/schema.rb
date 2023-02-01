@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_25_233721) do
+ActiveRecord::Schema.define(version: 2023_02_01_064053) do
 
   create_table "families", force: :cascade do |t|
     t.string "last_name"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2023_01_25_233721) do
     t.integer "pet_type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "day"
+    t.integer "AMorPM"
+    t.integer "pet_id"
+    t.string "user"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "isfed"
   end
 
   create_table "types", force: :cascade do |t|
