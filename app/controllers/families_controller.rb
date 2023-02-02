@@ -6,9 +6,9 @@ class FamiliesController < ApplicationController
 
     def fPet
         family = Family.find_by(last_name: params[:last_name])
-        pets = Pet.where(family_id: family.id)
+        pets = Pet.where(family_id: family)
         if family
-            render json: pets, except: [:name]
+            render json: pets
         end
     end
 
@@ -17,7 +17,7 @@ class FamiliesController < ApplicationController
         render json: family, status: :created
     end
 
-    def id
+    def fid
         family = Family.find_by(id: params[:id])
         render json: family, status: :ok
     end

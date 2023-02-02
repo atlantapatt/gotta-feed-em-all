@@ -24,7 +24,11 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
                 password,
             }),
         }).then((r) => {
-            r.json().then((user) => setUser(user))
+            if (r.ok) {
+               r.json().then((user) => setUser(user)) 
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
         })
         
     }
@@ -42,10 +46,16 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
 //     fetchFamily()
 // }
 
+let myErrors = errors.map((err) => {
+    return(
+      <p>{err}</p>
+    )
+  }) 
 
 // onClick={(() => handleSubmit())}
+//U: Test P: Test logs in but errors out?
     return (
-        <div>
+        <div className="login-form">
             <h4>Please Login</h4>
                 <form onSubmit={submitData}>
                     <label>Username</label>
@@ -53,6 +63,9 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
                     <label>Password</label>
                     <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
                     <button  >Submit</button>
+                    <form className="error-form">
+                    {myErrors}
+                    </form>
                     <p onClick={() => setSignIn(true)}>Not a user? Click here to sign up.</p>
                 </form>
         </div>        

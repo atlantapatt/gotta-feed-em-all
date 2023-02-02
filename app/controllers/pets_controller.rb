@@ -26,6 +26,21 @@ class PetsController < ApplicationController
         end
     end
 
+    def schedules
+        pet = Pet.find_by(id: params[:id])
+        if pet
+            render json: pet, include: :schedules
+        end
+    end
+
+    def petSchedules
+        pet = Pet.find_by(id: params[:id])
+        schedules = Schedule.where(pet_id: pet)
+        if pet
+            render json: schedules
+        end
+    end
+
     def destroy
         pet = Pet.find_by(id: params[:id])
         if pet

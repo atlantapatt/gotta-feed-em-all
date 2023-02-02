@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Family.create([
     {
-        last_name: 'Patterson'
+        last_name: 'Patterson',
+        password: "Patterson"
+        
     }
 ])
 
@@ -30,6 +32,12 @@ Type.create([
         name: "Test",
         family_id: 1
     },
+    {
+        username: "atl",
+        password: "atl",
+        name: "Atlanta",
+        family_id: 1
+    }
 
 ])
 
@@ -54,6 +62,16 @@ PetUser.create([
     {
         user_id: 1,
         pet_id: 2
+    }
+])
+
+Schedule.create([
+    {
+        day: 1,
+        AMorPM: 1,
+        pet_id: 1,
+        user: "Atlanta",
+        isfed: false
     }
 ])
 

@@ -49,21 +49,20 @@ useEffect(() => {
 },[user]);
  
   useEffect(() => {
-    if (user !== null) {
+    if (family !== null) {
       fetch(`/family/${family.last_name}/pets`).then((response) => {
       if (response.ok) {
-        response.json().then((pets) => setMyPets(pets));
+        response.json().then((pets) => setMyPets(pets))
       } else {
         return null
       }
     });
-    }
-    
+    } 
   },[family]);
 
 console.log(myPets)
 console.log(family)
-console.log(user !== null)
+console.log(user == null)
 
     useEffect(() => {
       fetch("/me").then((response) => {
@@ -86,8 +85,8 @@ console.log(user !== null)
   console.log(onePet)
 
     // let singlepet = 
-console.log(myPets)
-    console.log(user)
+// console.log(myPets)
+//     console.log(user)
 
     
 

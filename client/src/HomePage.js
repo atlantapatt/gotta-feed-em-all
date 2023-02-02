@@ -7,8 +7,8 @@ function HomePage({myPets, setMyPets, url, setUrl}) {
 let emptyArray = (myPets.length == 0)
 
 
-console.log(myPets)
-console.log(myPets.length)
+// console.log(myPets)
+// console.log(myPets.length)
 
 
 

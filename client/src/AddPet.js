@@ -39,7 +39,7 @@ function petPost() {
         r.json().then((pet) => setNewPet(pet))
     },[])
 }
-
+//change petuser to schedule as join table?
 function petUser() {
     fetch("/petuser", {
         method: "POST",

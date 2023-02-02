@@ -97,6 +97,9 @@ function signUp(e) {
                     <button>Submit</button>
                     <p onClick={() => setSignIn(false)}>Already a user? Click here.</p>
                 </form>
+                <form>
+                
+                </form>
         </div> 
     )
 }
