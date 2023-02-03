@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-function Schedules({onePet}) {
-    const [pet, setPet] = useState()
-    let petSort
+function Schedules({onePet, petSchedule, setPetSchedule, petName}) {
+    const [sortPet, setSortPet] = useState()
+    const [petAM, setPetAM] = useState()
+    const [petPM, setPetPM] = useState()
+    const [mapAM, setMapAM] = useState()
+    const [mapPM, setMapPM] = useState()
     //map fetched schedules into columns
     const history = useHistory()
+
+    
 
     function routeChange() {
         let path = '/addschedule'
@@ -12,10 +17,10 @@ function Schedules({onePet}) {
     }
 
     useEffect(() => {
-        if (onePet !== null) {
+        if (onePet !== undefined) {
           fetch(`/pet/${onePet.id}`).then((response) => {
           if (response.ok) {
-            response.json().then((pet) => setPet(pet));
+            response.json().then((pet) => setPetSchedule(pet));
           } else {
             return null
           }
@@ -23,53 +28,75 @@ function Schedules({onePet}) {
         } 
       },[]);
 
-    // let petAM = pet.filter(pet => {
-    //     if (pet.AMorPM == 1) {
-    //         return pet
-    //     }
-    // })
+      useEffect(() => {
+        if (sortPet !== undefined) {
+            setPetAM(sortPet.filter(pet => {
+                            if (pet.AMorPM == 1) {
+                                return pet
+                            }
+                        }))
+        } else {
+            console.log("no AM pets")
+        }
+      },[sortPet]);
+console.log(petAM)
 
-    // let petPM = pet.filter(pet => {
-    //     if (pet.AMorPM == 2) {
-    //         return pet
-    //     }
-    // })
+   
+useEffect(() => {
+    if (sortPet !== undefined) {
+        setPetPM(sortPet.filter(pet => {
+                        if (pet.AMorPM == 2) {
+                            return pet
+                        }
+                    }))
+    } else {
+        console.log("no PM pets")
+    }
+  },[sortPet]);
+  console.log(petPM)
 
-    //type error on pet.sort even though its not undefined
-    //petSort returning null
-    useEffect(() => {
-        if (pet !== undefined) {
-            petSort = pet.sort(function(a, b) {
-                    var keyA = a.day,
-                        keyB = b.day;
-                // Compare the 2 dates
-                    if (keyA < keyB) return -1;
-                    if (keyA > keyB) return 1;
-                    return 0;
-                });
-            } else {
-                return null
-            }
-      },[pet]);
+  useEffect(() => {
+    if (petAM !== undefined) {
+      setMapAM(petAM.map((schedule) => {
+        return(
+            <td>{schedule.user}</td>
+        )
+       }))
+    } else {
+        console.log("no AM schedules")
+    }
+  },[petAM]);
 
-// if (pet !== null) {
-// petSort = pet.sort(function(a, b) {
-//         var keyA = a.day,
-//             keyB = b.day;
-//     // Compare the 2 dates
-//         if (keyA < keyB) return -1;
-//         if (keyA > keyB) return 1;
-//         return 0;
-//     });
-// } else {
-//     return null
-// }
+  useEffect(() => {
+    if (petPM !== undefined) {
+      setMapPM(petPM.map((schedule) => {
+        return(
+            <td>{schedule.user}</td>
+        )
+       }))
+    } else {
+        console.log("no PM schedules")
+    }
+  },[petPM]);
 
 
+ 
+useEffect(() => {
+    if (petSchedule !== undefined) {
+            setSortPet(petSchedule.sort((a, b) => a.day - b.day))
+    } else {
+            console.log("no pets")
+    }
+},[petSchedule]);
 
-    console.log(pet)
-    console.log(pet !== undefined)
-    console.log(petSort)
+
+
+
+
+
+    console.log(petSchedule)
+    console.log(petSchedule !== undefined)
+    console.log(sortPet)
 
 
 
@@ -88,7 +115,7 @@ function Schedules({onePet}) {
 
             <button className="reset-button">Reset Week</button>
             <table className="schedule-table">
-                <tr>
+                <tr className="day-of-week">
                     <th>Time</th>
                     <th>Monday</th>
                     <th>Tuesday</th>
@@ -98,17 +125,17 @@ function Schedules({onePet}) {
                     <th>Saturday</th>
                     <th>Sunday</th>
                 </tr>
-                <tr>
+                <tr className="am-time">
                     <td>AM</td>
-                    <td>info</td>
+                    {mapAM}
                 </tr>
-                <tr>
+                <tr className="pm-time">
                     <td>PM</td>
-                    <td>info</td>
+                    {mapPM}
                 </tr>
                 
             </table>
-            <button onClick={routeChange}>Add to {onePet.name}'s Schedule </button>
+            <button onClick={routeChange}>Add to {petName}'s Schedule </button>
         </div>
      );
 }

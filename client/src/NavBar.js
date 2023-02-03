@@ -25,6 +25,10 @@ function NavBar({family, user, setUser,setUrl}) {
         setUrl('')
         
     }
+    function myAccountRoute() {
+        let account = '/user'
+        history.push(account)
+    }
     function familyLoad() {
         if (family !== null) {
             return (
@@ -39,7 +43,7 @@ function NavBar({family, user, setUser,setUrl}) {
                 <p>Welcome {user.name}!</p>
                 {familyLoad}
                 <p onClick={goHomeRoute}>Logo</p>
-                <p>My Account</p>
+                <p onClick={myAccountRoute}>My Account</p>
                 <button onClick={addPetRoute}>ADD PET</button>
                 <button onClick={handleLogout}>LOG OUT</button>
             </div>

@@ -54,16 +54,16 @@ Pet.create([
     }
 ])
 
-PetUser.create([
-    {
-        user_id: 1,
-        pet_id: 1
-    }, 
-    {
-        user_id: 1,
-        pet_id: 2
-    }
-])
+# PetUser.create([
+#     {
+#         user_id: 1,
+#         pet_id: 1
+#     }, 
+#     {
+#         user_id: 1,
+#         pet_id: 2
+#     }
+# ])
 
 Schedule.create([
     {
@@ -72,6 +72,13 @@ Schedule.create([
         pet_id: 1,
         user: "Atlanta",
         isfed: false
+    },
+    {
+        day: 2,
+        AMorPM: 1,
+        pet_id: 1,
+        user: "Atlanta",
+        isfed: true
     }
 ])
 

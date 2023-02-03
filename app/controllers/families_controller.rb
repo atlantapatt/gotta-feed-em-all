@@ -12,6 +12,14 @@ class FamiliesController < ApplicationController
         end
     end
 
+    def users
+        family = Family.find_by(id: params[:id])
+        users = User.where(family_id: family)
+        if family
+            render json: users
+        end
+    end
+
     def create
         family = Family.create(family_params)
         render json: family, status: :created

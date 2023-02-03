@@ -1,19 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function AddSchedule({onePet}) {
+
+function AddSchedule({onePet, url, family, handleAddSchedule}) {
     const [day, setDay] = useState()
     const [time, setTime] = useState()
     const [person, setPerson] = useState()
+    const [names, setNames] = useState()
+    const [mapNames, setMapNames] = useState()
     console.log(`the day is ${day} and the time is ${time}`)
-  
+    const history = useHistory()
     //add a back button?
+function routeChange() {
+    history.push(url)
+}
+
+console.log(person)
     //fetch family member names
+    useEffect(() => {
+        if (family !== null) {
+        fetch(`/family/${family.id}/users`).then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setNames(user));
+          }
+        })};
+      },[family]);
+      console.log(names)
+      console.log()
+      useEffect(() => {
+        if (names !== undefined) {
+          setMapNames(names.map((users) => {
+            return(
+                <option value={users.name}>{users.name}</option>
+            )
+           }))
+        } else {
+            console.log("no users")
+        }
+      },[names]);
+
     function onSubmit(e) {
         e.preventDefault()
-        console.log('submitted')
+        setSchedule()
+        routeChange()
+        
+    }
+    function setSchedule() {
+        fetch("/schedule", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                day: day,
+                AMorPM: time,
+                user: person,
+                pet_id: onePet.id,
+                isfed: false
+    
+            }),
+        }).then((r) => {
+            r.json().then((schedule) => handleAddSchedule(schedule))
+        })
     }
     return ( 
         <div>
+            <button onClick={routeChange}>Go Back</button>
             <form onSubmit={onSubmit}>
                 <p>You are adding to {onePet.name}'s schedule.</p>
                 <div id="day-radio">
@@ -54,8 +106,9 @@ function AddSchedule({onePet}) {
                     <input onClick={((e) => setTime(e.target.value))} name='time' type='radio' value={2}></input>
                 </div>
                 <lable>Person Assigned</lable>
-                <select>
-                    {/* map over family members */}
+                <select onChange={((e) => setPerson(e.target.value))}>
+                   <option>Select Family Member</option>
+                   {mapNames}
                 </select>
                 <br></br>
                 <button>Submit</button>

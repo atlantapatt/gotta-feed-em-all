@@ -10,6 +10,7 @@ import SinglePetCard from './SinglePetCard';
 import FamilySignUp from './LogInPage/FamilySignUp';
 import FamilyJoin from './LogInPage/FamilyJoin';
 import AddSchedule from './AddSchedule';
+import Account from './Account';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -18,10 +19,19 @@ function App() {
   const [url, setUrl] = useState('')
   const [family, setFamily] = useState([])
   const [familyName, setFamilyName] = useState("")
+  const [petSchedule, setPetSchedule] = useState()
+  //set state to have a week pet schedule with everything filled but the name and ped id as null
+
+
+    function handleAddSchedule(schedule) {
+        setPetSchedule([...petSchedule, schedule])
+        
+      }
 
   let petName = url.split('/').pop()
+  console.log(url)
   
-
+//on refresh JSON error
 //users in the same family don't have the same pets
 //track user pets based on families?
 //sometimes setFamily and setPets doesn't set on login
@@ -49,7 +59,7 @@ useEffect(() => {
 },[user]);
  
   useEffect(() => {
-    if (family !== null) {
+    if (user !== null) {
       fetch(`/family/${family.last_name}/pets`).then((response) => {
       if (response.ok) {
         response.json().then((pets) => setMyPets(pets))
@@ -101,6 +111,9 @@ console.log(user == null)
   <div>
     <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
+      <Route exact path='/user'>
+        <Account user={user} />
+      </Route>
       <Route exact path='/test'>
         <Test />
       </Route>
@@ -114,7 +127,7 @@ console.log(user == null)
         <Login setUser={setUser} />
       </Route>
       <Route exact path={url}>
-        <SinglePetCard onePet={onePet}/>
+        <SinglePetCard petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
       </Route>
       <Route exact path='/create'>
         <FamilySignUp />
@@ -123,8 +136,9 @@ console.log(user == null)
         <FamilyJoin />
       </Route>
       <Route exact path='/addschedule'>
-        <AddSchedule onePet={onePet} />
+        <AddSchedule handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
       </Route>
+      
     </Switch>
   </div>    
   );
