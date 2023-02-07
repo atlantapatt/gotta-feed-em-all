@@ -20,13 +20,70 @@ function App() {
   const [family, setFamily] = useState([])
   const [familyName, setFamilyName] = useState("")
   const [petSchedule, setPetSchedule] = useState()
+  const BASESCHEDULE = [{
+    day: 1,
+    AMorPM: 1, 
+},
+{
+    day: 1,
+    AMorPM: 2, 
+},
+{
+    day: 2,
+    AMorPM: 1, 
+},
+{
+    day: 2,
+    AMorPM: 2, 
+},
+{
+    day: 3,
+    AMorPM: 1, 
+},
+{
+    day: 3,
+    AMorPM: 2, 
+},
+{
+    day: 4,
+    AMorPM: 1, 
+},
+{
+    day: 4,
+    AMorPM: 2, 
+},
+{
+    day: 5,
+    AMorPM: 1, 
+},
+{
+    day: 5,
+    AMorPM: 2, 
+},
+{
+    day: 6,
+    AMorPM: 1, 
+},
+{
+    day: 6,
+    AMorPM: 2, 
+},
+{
+    day: 7,
+    AMorPM: 1, 
+},
+{
+    day: 7,
+    AMorPM: 2, 
+}]
   //set state to have a week pet schedule with everything filled but the name and ped id as null
 
 
     function handleAddSchedule(schedule) {
-        setPetSchedule([...petSchedule, schedule])
-        
+      setPetSchedule([...petSchedule, schedule])
       }
+      
+        
 
   let petName = url.split('/').pop()
   console.log(url)
@@ -84,6 +141,8 @@ console.log(user == null)
       });
     },[]);
 
+ 
+
     function handleAddPet(pet) {
       setMyPets([...myPets, pet])
       
@@ -92,7 +151,7 @@ console.log(user == null)
     let onePet = myPets.find((pet) => {
       return pet.name == petName
   })
-  console.log(onePet)
+  
 
     // let singlepet = 
 // console.log(myPets)
@@ -112,7 +171,7 @@ console.log(user == null)
     <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/user'>
-        <Account user={user} />
+        <Account setUser={setUser} user={user} />
       </Route>
       <Route exact path='/test'>
         <Test />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Schedules from "./Schedules";
+import Test from "./Test";
 
 function SinglePetCard({onePet, petSchedule, setPetSchedule}) {
     const [petName, setPetName] = useState()
@@ -46,7 +47,8 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule}) {
             {petName}
             <br></br>
             {petType}
-            <Schedules petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet} />
+            {/* <Schedules petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet} /> */}
+            <Test />
         </div>
      );
 }

@@ -3,13 +3,17 @@ import { useHistory } from "react-router-dom";
 function Schedules({onePet, petSchedule, setPetSchedule, petName}) {
     const [sortPet, setSortPet] = useState()
     const [petAM, setPetAM] = useState()
+    const [am, setAM] = useState([])
     const [petPM, setPetPM] = useState()
     const [mapAM, setMapAM] = useState()
     const [mapPM, setMapPM] = useState()
+    const [monday, setMonday] = useState()
+    const [testSchedule, setTestSchedule]= useState()
     //map fetched schedules into columns
     const history = useHistory()
+   
+    console.log(petSchedule)
 
-    
 
     function routeChange() {
         let path = '/addschedule'
@@ -28,6 +32,15 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName}) {
         } 
       },[]);
 
+      console.log(petSchedule)
+
+    //   let filterSchedule = petSchedule.filter(pet => {
+    //     for (let i=1; i<8; i++) {
+    //         if (pet.day == i) {
+    //             return pet
+    //         }
+    //     }
+    //   })
       useEffect(() => {
         if (sortPet !== undefined) {
             setPetAM(sortPet.filter(pet => {
@@ -57,7 +70,19 @@ useEffect(() => {
 
   useEffect(() => {
     if (petAM !== undefined) {
-      setMapAM(petAM.map((schedule) => {
+    petAM.forEach(element => {
+        for (let i=0; i<8; i++) {
+            if (element.day === i) {
+                setAM([...am, element])
+            }
+        }
+    });
+    }},[petAM])
+    console.log(am)
+
+  useEffect(() => {
+    if (am !== undefined) {
+      setMapAM(am.map((schedule) => {
         return(
             <td>{schedule.user}</td>
         )
@@ -65,7 +90,7 @@ useEffect(() => {
     } else {
         console.log("no AM schedules")
     }
-  },[petAM]);
+  },[am]);
 
   useEffect(() => {
     if (petPM !== undefined) {
@@ -89,9 +114,21 @@ useEffect(() => {
     }
 },[petSchedule]);
 
+// useEffect(() => {
+//     if (petSchedule !== undefined) {
+//         petSchedule.filter(pet => {
+//             for (let i=1; i<8; i++) {
+//                 if (pet.day == i) {
+//                     console.log(pet)
+//                 }
+//             }
+//           })
+//     }
+// },[petSchedule]);
 
 
 
+console.log(testSchedule)
 
 
     console.log(petSchedule)
@@ -115,7 +152,7 @@ useEffect(() => {
 
             <button className="reset-button">Reset Week</button>
             <table className="schedule-table">
-                <tr className="day-of-week">
+                <tr className="day">
                     <th>Time</th>
                     <th>Monday</th>
                     <th>Tuesday</th>
@@ -124,18 +161,24 @@ useEffect(() => {
                     <th>Friday</th>
                     <th>Saturday</th>
                     <th>Sunday</th>
+                    
+                    
                 </tr>
                 <tr className="am-time">
                     <td>AM</td>
                     {mapAM}
+                    
+                    
                 </tr>
                 <tr className="pm-time">
                     <td>PM</td>
                     {mapPM}
-                </tr>
                 
+                </tr>
             </table>
             <button onClick={routeChange}>Add to {petName}'s Schedule </button>
+        
+        
         </div>
      );
 }

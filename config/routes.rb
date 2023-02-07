@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'family/:id/users', to: 'families#users'
   get 'family/:last_name/pets', to: 'families#fPet'
   get 'family/:last_name', to: 'families#show'
+  patch 'user/:id', to: 'users#update'
   post 'pet', to: 'pets#create'
   post 'signup', to: 'users#create'
   post 'login', to: 'sessions#create'
