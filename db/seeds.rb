@@ -78,7 +78,14 @@ Schedule.create([
         AMorPM: 1,
         pet_id: 1,
         user: "Atlanta",
-        isfed: true
+        isfed: false
+    },
+    {
+        day: 3,
+        AMorPM: 2,
+        pet_id: 1,
+        user: "Test",
+        isfed: false
     }
 ])
 

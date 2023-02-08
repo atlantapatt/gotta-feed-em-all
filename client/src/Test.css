@@ -7,3 +7,11 @@
 #day {
     padding: 2%;
 }
+
+.time {
+    display: inline-block;
+    position: absolute;
+    margin-top: 10%;
+    vertical-align: middle;
+    padding: 1%;
+}

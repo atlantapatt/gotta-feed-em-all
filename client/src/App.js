@@ -174,7 +174,7 @@ console.log(user == null)
         <Account setUser={setUser} user={user} />
       </Route>
       <Route exact path='/test'>
-        <Test />
+        <Test onePet={onePet} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
       </Route>
       <Route exact path='/'>
         <HomePage  url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />

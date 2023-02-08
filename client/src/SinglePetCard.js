@@ -48,7 +48,7 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule}) {
             <br></br>
             {petType}
             {/* <Schedules petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet} /> */}
-            <Test />
+            <Test onePet={onePet} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
         </div>
      );
 }
