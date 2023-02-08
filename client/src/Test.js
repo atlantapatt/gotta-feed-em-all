@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Test.css'
-function Test({onePet, petSchedule, setPetSchedule}) {
+function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
     const [monday, setMonday] = useState([])
     const [tuesday, setTuesday] = useState([])
     const [wednesday, setWednesday]= useState([])
@@ -14,10 +14,14 @@ function Test({onePet, petSchedule, setPetSchedule}) {
     const pmObject = {AMorPM: 2, user: 'no user'}
 
     function indexA(array) {
-        return array.findIndex(x => x.AMorPM == 1 )
+        if (array !== undefined) {
+          return array.findIndex(x => x.AMorPM == 1 )  
+        }
     }
     function indexP(array) {
-        return array.findIndex(x => x.AMorPM == 2 )
+        if (array !== undefined) {
+          return array.findIndex(x => x.AMorPM == 2 )
+        }
     }
 
     
@@ -32,76 +36,71 @@ function Test({onePet, petSchedule, setPetSchedule}) {
           }
         });
         } 
-      },[setPetSchedule]);
+      },[onePet.id]);
       console.log(petSchedule)
 
     useEffect(() => {
         if (petSchedule !== undefined) {
             petSchedule.forEach(schedule => {
                if (schedule.day === 1) {
-                setMonday(...monday,[schedule])
-                handleSchedule(monday)
-                setMonday(monday)
+                setMonday([schedule])
+                // handleSchedule(monday)
+                // setMonday(monday)
                 
             }
             if (schedule.day === 2) {
-                setTuesday(...tuesday,[schedule])
-                handleSchedule(tuesday)
-                setTuesday(tuesday)
+                setTuesday([schedule])
+                // handleSchedule(tuesday)
+                // setTuesday(tuesday)
             } 
             if (schedule.day === 3) {
-                setWednesday(...wednesday,[schedule])
-               handleSchedule(wednesday)
-               setWednesday(wednesday)
+                setWednesday([schedule])
                
             }
-            // if (schedule.day === 4) {
-            //     setThursday([schedule])
-            // //    handleSchedule(thursday)
-            // //    setThursday(thursday)
+            if (schedule.day === 4) {
+                setThursday([schedule])   
                
-            // }
+            }
             // if (schedule.day === 5) {
             //     setFriday([schedule])
-            // //    handleSchedule(friday)
-            // //    setFriday(friday)
+            // //    
                
             // }
             // if (schedule.day === 6) {
             //     setSaturday([schedule])
-            // //    handleSchedule(saturday)
-            // //    setSaturday(saturday)
+            // //    
                
             // }
             // if (schedule.day === 7) {
             //     setSunday([schedule])
-            // //    handleSchedule(sunday)
-            // //    setSunday(sunday)
-               
+            // //    
             // } 
             });
             
         } 
-      },[setPetSchedule]);
+      },[]);
 
       console.log(petSchedule)
-      console.log(indexA(wednesday))
-      console.log(monday)
+    //   console.log(wednesday)
      
       
 
       function sortArray(array) {
-        return array.sort((a, b) => a.AMorPM - b.AMorPM)
+        if (array !== undefined) {
+            return array.sort((a, b) => a.AMorPM - b.AMorPM)
+        }
       }
 
       function noAM(array) {
        if (indexA(array) == -1) {
        let newArray = array.push(amObject)
         return (newArray)
-       } else {
+       }else {
         console.log('am exists')
        }
       }
+
+
 
       function noPM(array) {
         if (indexP(array) == -1) {
@@ -118,14 +117,18 @@ function Test({onePet, petSchedule, setPetSchedule}) {
         sortArray(array)
         return array
       }
+
+      console.log(handleSchedule(thursday))
  
       function mapArray(array) {
+        handleSchedule(array)
+        if (array !== undefined) {
        return array.map((schedule) => {
             return(
                 <p>{schedule.user}</p>
             )
            })
-      }
+      }}
 
   
 console.log(wednesday)
@@ -150,6 +153,7 @@ console.log(wednesday)
                 </div>
                 <div id='day' className="thursday">
                     <p>Thursday</p>
+                    {mapArray(thursday)}
                     
                 </div>
                 <div id='day' className="friday">
