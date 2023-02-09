@@ -87,6 +87,7 @@ function App() {
 
   let petName = url.split('/').pop()
   console.log(url)
+  console.log(petName)
   
 //on refresh JSON error
 //users in the same family don't have the same pets
@@ -174,7 +175,7 @@ console.log(user == null)
         <Account setUser={setUser} user={user} />
       </Route>
       <Route exact path='/test'>
-        <Test myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
+        <Test url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
       </Route>
       <Route exact path='/'>
         <HomePage  url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
@@ -186,7 +187,7 @@ console.log(user == null)
         <Login setUser={setUser} />
       </Route>
       <Route exact path={url}>
-        <SinglePetCard petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
+        <SinglePetCard setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
       </Route>
       <Route exact path='/create'>
         <FamilySignUp />

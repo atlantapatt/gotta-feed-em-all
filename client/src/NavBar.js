@@ -22,7 +22,7 @@ function NavBar({family, user, setUser,setUrl}) {
     function goHomeRoute() {
         let path = '/'
         history.push(path)
-        setUrl('')
+        setUrl('/')
         
     }
     function myAccountRoute() {
@@ -41,7 +41,7 @@ function NavBar({family, user, setUser,setUrl}) {
         <div>
             <div>
                 <p>Welcome {user.name}!</p>
-                {familyLoad}
+                {familyLoad()}
                 <p onClick={goHomeRoute}>Logo</p>
                 <p onClick={myAccountRoute}>My Account</p>
                 <button onClick={addPetRoute}>ADD PET</button>

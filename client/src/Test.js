@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Test.css'
-function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
+import Test2 from './Test2';
+function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     const [monday, setMonday] = useState([])
     const [tuesday, setTuesday] = useState([])
     const [wednesday, setWednesday]= useState([])
@@ -8,6 +9,7 @@ function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
     const [friday, setFriday] = useState()
     const [saturday, setSaturday] = useState()
     const [sunday, setSunday] = useState()
+    const [loading, setLoading] = useState()
 
 
     const amObject = {AMorPM: 1, user: 'no user'}
@@ -24,24 +26,14 @@ function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
         }
     }
 
-    
+    console.log(onePet)
+    console.log()
+    console.log()
 
-    useEffect(() => {
-        if (onePet !== undefined) {
-          fetch(`/pet/${onePet.id}`).then((response) => {
-          if (response.ok) {
-            response.json().then((pet) => setPetSchedule(pet));
-          } else {
-            return null
-          }
-        });
-        } 
-      },[onePet.id]);
-      console.log(petSchedule)
-
-    useEffect(() => {
-        if (petSchedule !== undefined) {
-            petSchedule.forEach(schedule => {
+    function days() {
+      if (petSchedule !== undefined) {
+        if (petSchedule !== []) {
+            petSchedule.filter(schedule => {
                if (schedule.day === 1) {
                 setMonday([schedule])
                 // handleSchedule(monday)
@@ -55,6 +47,7 @@ function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
             } 
             if (schedule.day === 3) {
                 setWednesday([schedule])
+              
                
             }
             if (schedule.day === 4) {
@@ -76,9 +69,30 @@ function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
             // //    
             // } 
             });
-            
-        } 
-      },[]);
+        } else {
+          setUrl(url)
+        }
+      }
+    }
+
+    // useEffect(() => {
+    //     if (onePet !== undefined) {
+    //       fetch(`/pet/${onePet.id}`).then((response) => {
+    //       if (response.ok) {
+    //         response.json().then((pet) => setPetSchedule(pet));
+    //       } else {
+    //         setUrl(url)
+    //       }
+    //     });
+    //     } 
+    //   },[setUrl]);
+      console.log(petSchedule)
+      
+    useEffect(() => {
+      if (petSchedule !== undefined) {
+        days()
+      }
+      },[petSchedule]);
 
       console.log(petSchedule)
     //   console.log(wednesday)
@@ -115,58 +129,19 @@ function Test({onePet, petSchedule, setPetSchedule, setMyPets, myPets}) {
         noAM(array)
         noPM(array)
         sortArray(array)
+        setLoading(false)
         return array
       }
 
-      console.log(handleSchedule(thursday))
+      console.log()
  
-      function mapArray(array) {
-        handleSchedule(array)
-        if (array !== undefined) {
-       return array.map((schedule) => {
-            return(
-                <p>{schedule.user}</p>
-            )
-           })
-      }}
+      
 
   
 console.log(wednesday)
     return ( 
         <div className="calendar">
-            <div className="time">
-                    <p>AM</p>
-                    <p>PM</p>
-            </div>
-            <div className="days">
-                <div id='day' className="monday">
-                    <p>Monday</p>
-                    {mapArray(monday)}
-                </div>
-                <div id='day' className="tuesday">
-                    <p>Tuesday</p>
-                    {mapArray(tuesday)}
-                </div>
-                <div id='day' className="wednesday">
-                    <p>Wednesday</p>
-                    {mapArray(wednesday)}
-                </div>
-                <div id='day' className="thursday">
-                    <p>Thursday</p>
-                    {mapArray(thursday)}
-                    
-                </div>
-                <div id='day' className="friday">
-                    <p>Friday</p>
-                </div>
-                <div id='day' className="saturday">
-                    <p>Saturday</p>
-                </div>
-                <div id='day' className="sunday">
-                    <p>Sunday</p>
-                </div>
-                
-            </div>
+            <Test2 handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} />
             
         </div>
      );
