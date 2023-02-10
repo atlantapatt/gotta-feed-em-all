@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './Test.css'
 import Test2 from './Test2';
+import { useHistory} from "react-router-dom";
+
 function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     const [monday, setMonday] = useState([])
     const [tuesday, setTuesday] = useState([])
@@ -11,6 +13,14 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     const [sunday, setSunday] = useState([])
     const [loading, setLoading] = useState()
 
+    const history = useHistory()
+   
+
+
+    function routeChange() {
+        let path = '/addschedule'
+        history.push(path)
+    }
 
     const amObject = {AMorPM: 1, user: 'no user'}
     const pmObject = {AMorPM: 2, user: 'no user'}
@@ -139,7 +149,7 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     return ( 
         <div className="calendar">
             <Test2 amObject={amObject} pmObject={pmObject} handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} friday={friday} saturday={saturday} sunday={sunday} />
-            
+            <button onClick={routeChange} >Add to {petName}'s Schedule </button>
         </div>
      );
 }
