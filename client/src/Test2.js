@@ -1,7 +1,23 @@
-function Test2({monday, tuesday, wednesday, thursday, handleSchedule}) {
+function Test2({amObject, pmObject, monday, tuesday, wednesday, thursday, friday, saturday, sunday, handleSchedule}) {
+ let ampmSchedule = [{AMorPM: 1, user: 'no user'}, {AMorPM: 2, user: 'no user'}]
 
-    function mapArray(array) {
+console.log(thursday)
+    function emptySchedule(array) {
+        if(array.length === 0) {
+        let amArray = array.push(amObject)
+        let pmArray = array.push(pmObject)
+        return pmArray
+        
+        }
+      }
+      console.log(thursday)
+
+    function emptyHandleArray(array) {
+        emptySchedule(array)
         handleSchedule(array)
+    }
+    function mapArray(array) {
+        emptyHandleArray(array)
         if (array !== undefined) {
        return array.map((schedule) => {
             return(
@@ -9,7 +25,8 @@ function Test2({monday, tuesday, wednesday, thursday, handleSchedule}) {
             )
            })
       }}
-
+      console.log(mapArray(wednesday))
+      console.log(mapArray(thursday))
     return ( 
         <div className="days">
                 <div id='day' className="monday">
@@ -31,12 +48,15 @@ function Test2({monday, tuesday, wednesday, thursday, handleSchedule}) {
                 </div>
                 <div id='day' className="friday">
                     <p>Friday</p>
+                    {mapArray(friday)}
                 </div>
                 <div id='day' className="saturday">
                     <p>Saturday</p>
+                    {mapArray(saturday)}
                 </div>
                 <div id='day' className="sunday">
                     <p>Sunday</p>
+                    {mapArray(sunday)}
                 </div>
                 
             </div>

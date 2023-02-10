@@ -5,10 +5,10 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     const [monday, setMonday] = useState([])
     const [tuesday, setTuesday] = useState([])
     const [wednesday, setWednesday]= useState([])
-    const [thursday, setThursday] = useState()
-    const [friday, setFriday] = useState()
-    const [saturday, setSaturday] = useState()
-    const [sunday, setSunday] = useState()
+    const [thursday, setThursday] = useState([])
+    const [friday, setFriday] = useState([])
+    const [saturday, setSaturday] = useState([])
+    const [sunday, setSunday] = useState([])
     const [loading, setLoading] = useState()
 
 
@@ -35,39 +35,35 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
         if (petSchedule !== []) {
             petSchedule.filter(schedule => {
                if (schedule.day === 1) {
-                setMonday([schedule])
+                setMonday(noSchedule([schedule]))
                 // handleSchedule(monday)
                 // setMonday(monday)
                 
             }
             if (schedule.day === 2) {
-                setTuesday([schedule])
+                setTuesday(noSchedule([schedule]))
                 // handleSchedule(tuesday)
                 // setTuesday(tuesday)
             } 
             if (schedule.day === 3) {
-                setWednesday([schedule])
-              
+                setWednesday(noSchedule([schedule]))
+                
                
             }
             if (schedule.day === 4) {
-                setThursday([schedule])   
-               
+                setThursday(noSchedule([schedule]))
+                
+                
             }
-            // if (schedule.day === 5) {
-            //     setFriday([schedule])
-            // //    
-               
-            // }
-            // if (schedule.day === 6) {
-            //     setSaturday([schedule])
-            // //    
-               
-            // }
-            // if (schedule.day === 7) {
-            //     setSunday([schedule])
-            // //    
-            // } 
+            if (schedule.day === 5) {
+                setFriday(noSchedule([schedule])) 
+            }
+            if (schedule.day === 6) {
+                setSaturday(noSchedule([schedule])) 
+            }
+            if (schedule.day === 7) {
+                setSunday(noSchedule([schedule]))  
+            } 
             });
         } else {
           setUrl(url)
@@ -75,17 +71,7 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
       }
     }
 
-    // useEffect(() => {
-    //     if (onePet !== undefined) {
-    //       fetch(`/pet/${onePet.id}`).then((response) => {
-    //       if (response.ok) {
-    //         response.json().then((pet) => setPetSchedule(pet));
-    //       } else {
-    //         setUrl(url)
-    //       }
-    //     });
-    //     } 
-    //   },[setUrl]);
+ 
       console.log(petSchedule)
       
     useEffect(() => {
@@ -104,44 +90,55 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
             return array.sort((a, b) => a.AMorPM - b.AMorPM)
         }
       }
-
+    function noSchedule(array){
+      noAM(array)
+      noPM(array)
+      return array
+    }
+    
       function noAM(array) {
        if (indexA(array) == -1) {
        let newArray = array.push(amObject)
+        return (newArray)
+       } if (array === undefined) {
+        let newArray = amObject
         return (newArray)
        }else {
         console.log('am exists')
        }
       }
 
+      
 
+    console.log(thursday)
 
       function noPM(array) {
         if (indexP(array) == -1) {
         let newArray = array.push(pmObject)
-         return (newArray)
-        } else {
-         console.log('pm exists')
+         return newArray
+        }  if (array === undefined) {
+          let newArray = pmObject
+          return newArray
+         } else {
+         console.log(`${array}: pm exists`)
         }
        }
 
       function handleSchedule(array) {
-        noAM(array)
-        noPM(array)
         sortArray(array)
-        setLoading(false)
         return array
       }
 
-      console.log()
+
  
       
 
   
-console.log(wednesday)
+
+
     return ( 
         <div className="calendar">
-            <Test2 handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} />
+            <Test2 amObject={amObject} pmObject={pmObject} handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} friday={friday} saturday={saturday} sunday={sunday} />
             
         </div>
      );
