@@ -1,0 +1,22 @@
+.nav {
+   
+}
+.nav-items {
+    align-items: center;
+    display: inline-flex;
+    
+    position: sticky;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: auto;
+    left: 25%;
+    
+}
+
+p {
+    margin: 2%;
+}
+
+.button {
+    
+}

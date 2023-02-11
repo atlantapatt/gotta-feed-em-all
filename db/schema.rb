@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_01_064053) do
+ActiveRecord::Schema.define(version: 2023_02_10_020534) do
 
   create_table "families", force: :cascade do |t|
     t.string "last_name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2023_02_01_064053) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "isfed"
+    t.integer "user_id"
   end
 
   create_table "types", force: :cascade do |t|

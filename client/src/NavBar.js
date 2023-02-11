@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useHistory, useNavigate } from "react-router-dom";
+import { useHistory} from "react-router-dom";
+import './NavBar.css'
 
 
 function NavBar({family, user, setUser,setUrl}) {
@@ -38,14 +39,16 @@ function NavBar({family, user, setUser,setUrl}) {
         }
     }
     return ( 
-        <div>
-            <div>
+        <div className="nav">
+            <div className="nav-items">
                 <p>Welcome {user.name}!</p>
                 {familyLoad()}
                 <p onClick={goHomeRoute}>Logo</p>
                 <p onClick={myAccountRoute}>My Account</p>
-                <button onClick={addPetRoute}>ADD PET</button>
-                <button onClick={handleLogout}>LOG OUT</button>
+                <div className="button">
+                    <button onClick={addPetRoute}>ADD PET</button>
+                    <button onClick={handleLogout}>LOG OUT</button>
+                </div>
             </div>
         </div>
      );

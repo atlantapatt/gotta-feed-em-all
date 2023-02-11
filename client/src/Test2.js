@@ -1,5 +1,5 @@
 function Test2({amObject, pmObject, monday, tuesday, wednesday, thursday, friday, saturday, sunday, handleSchedule}) {
- let ampmSchedule = [{AMorPM: 1, user: 'no user'}, {AMorPM: 2, user: 'no user'}]
+
 
 console.log(thursday)
     function emptySchedule(array) {

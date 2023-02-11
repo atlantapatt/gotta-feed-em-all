@@ -70,6 +70,7 @@ Schedule.create([
         day: 1,
         AMorPM: 1,
         pet_id: 1,
+        user_id: 2,
         user: "Atlanta",
         isfed: false
     },
@@ -77,6 +78,7 @@ Schedule.create([
         day: 2,
         AMorPM: 1,
         pet_id: 1,
+        user_id: 2,
         user: "Atlanta",
         isfed: false
     },
@@ -84,6 +86,7 @@ Schedule.create([
         day: 3,
         AMorPM: 2,
         pet_id: 1,
+        user_id: 1,
         user: "Test",
         isfed: false
     }

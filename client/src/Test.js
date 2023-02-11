@@ -11,7 +11,6 @@ function Test({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
     const [friday, setFriday] = useState([])
     const [saturday, setSaturday] = useState([])
     const [sunday, setSunday] = useState([])
-    const [loading, setLoading] = useState()
 
     const history = useHistory()
    

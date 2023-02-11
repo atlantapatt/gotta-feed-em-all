@@ -26,12 +26,12 @@ console.log(person)
         })};
       },[family]);
       console.log(names)
-      console.log()
+      
       useEffect(() => {
         if (names !== undefined) {
           setMapNames(names.map((users) => {
             return(
-                <option value={users.name}>{users.name}</option>
+                <option value={users.id}>{users.name}</option>
             )
            }))
         } else {
@@ -54,7 +54,7 @@ console.log(person)
             body: JSON.stringify({
                 day: day,
                 AMorPM: time,
-                user: person,
+                user_id: person,
                 pet_id: onePet.id,
                 isfed: false
     
