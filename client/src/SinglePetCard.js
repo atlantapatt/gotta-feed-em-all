@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Schedules from "./Schedules";
-import Test from "./Test";
 import { useHistory} from "react-router-dom";
 
 function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
@@ -74,7 +73,7 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
             <br></br>
             {petType}
             {/* <Schedules petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet} /> */}
-            <Test setUrl={setUrl} url={url} onePet={onePet} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
+            <Schedules setUrl={setUrl} url={url} onePet={onePet} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
         </div>
      );
 }

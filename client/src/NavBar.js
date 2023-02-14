@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useHistory} from "react-router-dom";
 import './NavBar.css'
 
-
 function NavBar({family, user, setUser,setUrl}) {
 
     const history = useHistory()
@@ -33,7 +32,7 @@ function NavBar({family, user, setUser,setUrl}) {
     function familyLoad() {
         if (family !== null) {
             return (
-                <p>You are part of the {family.last_name} family!</p>
+                <p className="family">You are part of the {family.last_name} family!</p>
 
             )
         }
@@ -41,13 +40,15 @@ function NavBar({family, user, setUser,setUrl}) {
     return ( 
         <div className="nav">
             <div className="nav-items">
-                <p>Welcome {user.name}!</p>
+                <p className="welcome">Welcome {user.name}!</p>
                 {familyLoad()}
-                <p onClick={goHomeRoute}>Logo</p>
-                <p onClick={myAccountRoute}>My Account</p>
+                <div className="img">
+                    <img className="logo" onClick={goHomeRoute} src='./MUTT_NOODLE_IMG.png' />
+                </div>
+                <p className="account" onClick={myAccountRoute}>My Account</p>
                 <div className="button">
                     <button onClick={addPetRoute}>ADD PET</button>
-                    <button onClick={handleLogout}>LOG OUT</button>
+                    <button className="logout" onClick={handleLogout}>LOG OUT</button>
                 </div>
             </div>
         </div>

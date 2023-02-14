@@ -1,4 +1,4 @@
-function Test2({amObject, pmObject, monday, tuesday, wednesday, thursday, friday, saturday, sunday, handleSchedule}) {
+function PetSchedules({amObject, pmObject, monday, tuesday, wednesday, thursday, friday, saturday, sunday, handleSchedule}) {
 
 
 console.log(thursday)
@@ -63,4 +63,4 @@ console.log(thursday)
      );
 }
 
-export default Test2;
+export default PetSchedules;

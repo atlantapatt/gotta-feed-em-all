@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-function Schedules({onePet, petSchedule, setPetSchedule, petName}) {
-    const [sortPet, setSortPet] = useState()
-    const [petAM, setPetAM] = useState()
-    const [am, setAM] = useState([])
-    const [petPM, setPetPM] = useState()
-    const [mapAM, setMapAM] = useState()
-    const [mapPM, setMapPM] = useState()
-    const [monday, setMonday] = useState()
-    const [testSchedule, setTestSchedule]= useState()
-    //map fetched schedules into columns
+import { useEffect, useState } from 'react';
+import './Schedules.css'
+import PetSchedules from './PetSchedules';
+import { useHistory} from "react-router-dom";
+
+function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) {
+    const [monday, setMonday] = useState([])
+    const [tuesday, setTuesday] = useState([])
+    const [wednesday, setWednesday]= useState([])
+    const [thursday, setThursday] = useState([])
+    const [friday, setFriday] = useState([])
+    const [saturday, setSaturday] = useState([])
+    const [sunday, setSunday] = useState([])
+
     const history = useHistory()
    
-    console.log(petSchedule)
 
 
     function routeChange() {
@@ -20,165 +21,134 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName}) {
         history.push(path)
     }
 
+    const amObject = {AMorPM: 1, user: 'no user'}
+    const pmObject = {AMorPM: 2, user: 'no user'}
+
+    function indexA(array) {
+        if (array !== undefined) {
+          return array.findIndex(x => x.AMorPM == 1 )  
+        }
+    }
+    function indexP(array) {
+        if (array !== undefined) {
+          return array.findIndex(x => x.AMorPM == 2 )
+        }
+    }
+
+    console.log(onePet)
+    console.log()
+    console.log()
+
+    function days() {
+      if (petSchedule !== undefined) {
+        if (petSchedule !== []) {
+            petSchedule.filter(schedule => {
+               if (schedule.day === 1) {
+                setMonday(noSchedule([schedule]))
+                // handleSchedule(monday)
+                // setMonday(monday)
+                
+            }
+            if (schedule.day === 2) {
+                setTuesday(noSchedule([schedule]))
+                // handleSchedule(tuesday)
+                // setTuesday(tuesday)
+            } 
+            if (schedule.day === 3) {
+                setWednesday(noSchedule([schedule]))
+                
+               
+            }
+            if (schedule.day === 4) {
+                setThursday(noSchedule([schedule]))
+                
+                
+            }
+            if (schedule.day === 5) {
+                setFriday(noSchedule([schedule])) 
+            }
+            if (schedule.day === 6) {
+                setSaturday(noSchedule([schedule])) 
+            }
+            if (schedule.day === 7) {
+                setSunday(noSchedule([schedule]))  
+            } 
+            });
+        } else {
+          setUrl(url)
+        }
+      }
+    }
+
+ 
+      console.log(petSchedule)
+      
     useEffect(() => {
-        if (onePet !== undefined) {
-          fetch(`/pet/${onePet.id}`).then((response) => {
-          if (response.ok) {
-            response.json().then((pet) => setPetSchedule(pet));
-          } else {
-            return null
-          }
-        });
-        } 
-      },[]);
+      if (petSchedule !== undefined) {
+        days()
+      }
+      },[petSchedule]);
 
       console.log(petSchedule)
+    //   console.log(wednesday)
+     
+      
 
-    //   let filterSchedule = petSchedule.filter(pet => {
-    //     for (let i=1; i<8; i++) {
-    //         if (pet.day == i) {
-    //             return pet
-    //         }
-    //     }
-    //   })
-      useEffect(() => {
-        if (sortPet !== undefined) {
-            setPetAM(sortPet.filter(pet => {
-                            if (pet.AMorPM == 1) {
-                                return pet
-                            }
-                        }))
-        } else {
-            console.log("no AM pets")
+      function sortArray(array) {
+        if (array !== undefined) {
+            return array.sort((a, b) => a.AMorPM - b.AMorPM)
         }
-      },[sortPet]);
-console.log(petAM)
-
-   
-useEffect(() => {
-    if (sortPet !== undefined) {
-        setPetPM(sortPet.filter(pet => {
-                        if (pet.AMorPM == 2) {
-                            return pet
-                        }
-                    }))
-    } else {
-        console.log("no PM pets")
+      }
+    function noSchedule(array){
+      noAM(array)
+      noPM(array)
+      return array
     }
-  },[sortPet]);
-  console.log(petPM)
+    
+      function noAM(array) {
+       if (indexA(array) == -1) {
+       let newArray = array.push(amObject)
+        return (newArray)
+       } if (array === undefined) {
+        let newArray = amObject
+        return (newArray)
+       }else {
+        console.log('am exists')
+       }
+      }
 
-  useEffect(() => {
-    if (petAM !== undefined) {
-    petAM.forEach(element => {
-        for (let i=0; i<8; i++) {
-            if (element.day === i) {
-                setAM([...am, element])
-            }
+      
+
+    console.log(thursday)
+
+      function noPM(array) {
+        if (indexP(array) == -1) {
+        let newArray = array.push(pmObject)
+         return newArray
+        }  if (array === undefined) {
+          let newArray = pmObject
+          return newArray
+         } else {
+         console.log(`${array}: pm exists`)
         }
-    });
-    }},[petAM])
-    console.log(am)
+       }
 
-  useEffect(() => {
-    if (am !== undefined) {
-      setMapAM(am.map((schedule) => {
-        return(
-            <td>{schedule.user}</td>
-        )
-       }))
-    } else {
-        console.log("no AM schedules")
-    }
-  },[am]);
-
-  useEffect(() => {
-    if (petPM !== undefined) {
-      setMapPM(petPM.map((schedule) => {
-        return(
-            <td>{schedule.user}</td>
-        )
-       }))
-    } else {
-        console.log("no PM schedules")
-    }
-  },[petPM]);
+      function handleSchedule(array) {
+        sortArray(array)
+        return array
+      }
 
 
  
-useEffect(() => {
-    if (petSchedule !== undefined) {
-            setSortPet(petSchedule.sort((a, b) => a.day - b.day))
-    } else {
-            console.log("no pets")
-    }
-},[petSchedule]);
+      
 
-// useEffect(() => {
-//     if (petSchedule !== undefined) {
-//         petSchedule.filter(pet => {
-//             for (let i=1; i<8; i++) {
-//                 if (pet.day == i) {
-//                     console.log(pet)
-//                 }
-//             }
-//           })
-//     }
-// },[petSchedule]);
+  
 
-
-
-console.log(testSchedule)
-
-
-    console.log(petSchedule)
-    console.log(petSchedule !== undefined)
-    console.log(sortPet)
-
-
-
-    //have onePet include schedules
-    //two filters, one AM one PM
-    //iterate through pet array then sort?
-    //sort so that Monday is first and Sunday last
-    //map filtered and sorted data into designated columns
-    //names of assigned user gets displayed under day/time
-    //when fed displayed user button gets color
-
-    //can reset week button reset backend for multiple data
 
     return ( 
-        <div className="schedule-div">
-
-            <button className="reset-button">Reset Week</button>
-            <table className="schedule-table">
-                <tr className="day">
-                    <th>Time</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                    
-                    
-                </tr>
-                <tr className="am-time">
-                    <td>AM</td>
-                    {mapAM}
-                    
-                    
-                </tr>
-                <tr className="pm-time">
-                    <td>PM</td>
-                    {mapPM}
-                
-                </tr>
-            </table>
-            <button onClick={routeChange}>Add to {petName}'s Schedule </button>
-        
-        
+        <div className="calendar">
+            <PetSchedules amObject={amObject} pmObject={pmObject} handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} friday={friday} saturday={saturday} sunday={sunday} />
+            <button onClick={routeChange} >Add to {petName}'s Schedule </button>
         </div>
      );
 }

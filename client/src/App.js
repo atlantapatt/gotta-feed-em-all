@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './NavBar';
-import Test from './Test';
+import Schedules from './Schedules';
 import { Route, Switch, useHistory } from "react-router-dom"
 import HomePage from './HomePage';
 import { useEffect, useState } from 'react';
@@ -174,8 +174,8 @@ console.log(user == null)
       <Route exact path='/user'>
         <Account setUser={setUser} user={user} />
       </Route>
-      <Route exact path='/test'>
-        <Test url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
+      <Route exact path='/schedules'>
+        <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
       </Route>
       <Route exact path='/'>
         <HomePage  url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />

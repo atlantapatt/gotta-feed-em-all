@@ -1,22 +1,55 @@
 .nav {
-   
+   width: 100%;
+   position: relative;
+   /* padding-top: 5%; */
+   /* padding-left: 12%; */
 }
 .nav-items {
     align-items: center;
     display: inline-flex;
-    
-    position: sticky;
+    margin-bottom: 5%;
+    position: relative;
     margin-right: 2%;
     margin-left: 2%;
-    width: auto;
+    
+    /* width: auto; */
     left: 25%;
     
 }
 
 p {
     margin: 2%;
+    position: relative;
+    
 }
 
+.welcome {
+    margin-left: -70%;
+    padding-left: 25%;
+}
+
+.family {
+    /* margin-left: -80%; */
+}
+
+.logo {
+    margin-left: 100%;
+    size: 5px;
+}
+
+img {
+    height: 250px;
+
+}
+
+.account{
+   margin-left: 80%;
+}
 .button {
-    
+    position: fixed;
+    margin-left: 60%;
+}
+
+.logout{
+    background-color:#bc2d29;
 }
