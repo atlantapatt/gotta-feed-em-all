@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Schedules from "./Schedules";
 import { useHistory} from "react-router-dom";
+import './SinglePetCard.css'
 
 function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
     const [petName, setPetName] = useState()
     const [petType, setPetType] = useState()
-    const [loading, setLoading] = useState()
+    const [img, setImg] = useState()
     
     const history = useHistory()
 //data sometimes doesn't load immediatly
@@ -42,6 +43,32 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
         } 
       },[onePet]);
 
+      useEffect(() => {
+        if (onePet !== undefined) {
+            if (onePet.pet_type_id === 1) {
+              fetch('https://dog.ceo/api/breeds/image/random').then((r) => {
+                if(r.ok) {
+                  r.json().then((img) => setImg(img.message))
+                }
+              })
+            }
+            if (onePet.pet_type_id === 2) {
+              fetch('https://cataas.com/cat').then((r) => {
+                if(r.ok) {
+                  r.json().then((img) => setImg(img))
+                }
+              })
+            }
+            if (onePet.pet_type_id === 3) {
+              fetch('https://randomfox.ca/floof/').then((r) => {
+                if(r.ok) {
+                  r.json().then((img) => setImg(img.image))
+                }
+              })
+            }
+        } 
+      },[setPetType]);
+
     // function petType() {
     //     if (onePet.pet_type_id === 1) {
     //         return ("dog")
@@ -64,17 +91,23 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
         });
         } 
       },[setUrl]);
-
+console.log(img)
     return ( 
+      <div className="petcard">
+        <button onClick={goHomeRoute}>Back</button>
         <div className="schedule-div">
-            <button onClick={goHomeRoute}>Back</button>
-            <br></br>
-            {petName}
-            <br></br>
-            {petType}
+            <div className="pet-info">
+              <br></br>
+              {petName}
+              <br></br>
+              {petType}
+              <br></br>
+              <img className="image" src={img} />
+            </div>
             {/* <Schedules petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet} /> */}
             <Schedules setUrl={setUrl} url={url} onePet={onePet} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
         </div>
+      </div>
      );
 }
 

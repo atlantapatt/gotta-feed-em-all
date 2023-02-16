@@ -20,6 +20,7 @@ function App() {
   const [family, setFamily] = useState([])
   const [familyName, setFamilyName] = useState("")
   const [petSchedule, setPetSchedule] = useState()
+  const [names, setNames] = useState()
   const BASESCHEDULE = [{
     day: 1,
     AMorPM: 1, 
@@ -87,7 +88,7 @@ function App() {
 
   let petName = url.split('/').pop()
   console.log(url)
-  console.log(petName)
+  console.log(family)
   
 //on refresh JSON error
 //users in the same family don't have the same pets
@@ -115,6 +116,16 @@ useEffect(() => {
     return null
   }
 },[user]);
+
+//sometimes causes errors
+    useEffect(() => {
+        if (family !== null) {
+        fetch(`/family/${family.id}/users`).then((response) => {
+          if (response.ok) {
+            response.json().then((user) => setNames(user));
+          }
+        })};
+      },[family]);
  
   useEffect(() => {
     if (user !== null) {
@@ -178,7 +189,7 @@ console.log(user == null)
         <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
       </Route>
       <Route exact path='/'>
-        <HomePage  url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
+        <HomePage names={names} url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
         <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
@@ -196,7 +207,7 @@ console.log(user == null)
         <FamilyJoin />
       </Route>
       <Route exact path='/addschedule'>
-        <AddSchedule handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
+        <AddSchedule setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
       </Route>
       
     </Switch>

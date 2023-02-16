@@ -1,8 +1,7 @@
 .nav {
    width: 100%;
    position: relative;
-   /* padding-top: 5%; */
-   /* padding-left: 12%; */
+   height: 200px;
 }
 .nav-items {
     align-items: center;
@@ -20,6 +19,7 @@
 p {
     margin: 2%;
     position: relative;
+    width: auto;
     
 }
 
@@ -29,7 +29,8 @@ p {
 }
 
 .family {
-    /* margin-left: -80%; */
+    text-align: center;
+    
 }
 
 .logo {

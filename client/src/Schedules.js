@@ -36,8 +36,6 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
     }
 
     console.log(onePet)
-    console.log()
-    console.log()
 
     function days() {
       if (petSchedule !== undefined) {
@@ -45,24 +43,15 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
             petSchedule.filter(schedule => {
                if (schedule.day === 1) {
                 setMonday(noSchedule([schedule]))
-                // handleSchedule(monday)
-                // setMonday(monday)
-                
             }
             if (schedule.day === 2) {
                 setTuesday(noSchedule([schedule]))
-                // handleSchedule(tuesday)
-                // setTuesday(tuesday)
             } 
             if (schedule.day === 3) {
                 setWednesday(noSchedule([schedule]))
-                
-               
             }
             if (schedule.day === 4) {
                 setThursday(noSchedule([schedule]))
-                
-                
             }
             if (schedule.day === 5) {
                 setFriday(noSchedule([schedule])) 
@@ -90,7 +79,6 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
       },[petSchedule]);
 
       console.log(petSchedule)
-    //   console.log(wednesday)
      
       
 
@@ -99,6 +87,7 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
             return array.sort((a, b) => a.AMorPM - b.AMorPM)
         }
       }
+
     function noSchedule(array){
       noAM(array)
       noPM(array)
@@ -129,7 +118,7 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
           let newArray = pmObject
           return newArray
          } else {
-         console.log(`${array}: pm exists`)
+         console.log(`pm exists`)
         }
        }
 
@@ -138,15 +127,9 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
         return array
       }
 
-
- 
-      
-
-  
-
-
     return ( 
         <div className="calendar">
+          <h4>{petName}'s Schedule</h4>
             <PetSchedules amObject={amObject} pmObject={pmObject} handleSchedule={handleSchedule} monday={monday}  tuesday={tuesday} wednesday={wednesday} thursday={thursday} friday={friday} saturday={saturday} sunday={sunday} />
             <button onClick={routeChange} >Add to {petName}'s Schedule </button>
         </div>

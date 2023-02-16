@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 
-function AddSchedule({onePet, url, family, handleAddSchedule}) {
+function AddSchedule({onePet, url, family, handleAddSchedule, names, setNames}) {
     const [day, setDay] = useState()
     const [time, setTime] = useState()
     const [person, setPerson] = useState()
-    const [names, setNames] = useState()
+    
     const [mapNames, setMapNames] = useState()
     console.log(`the day is ${day} and the time is ${time}`)
     const history = useHistory()
@@ -16,7 +16,7 @@ function routeChange() {
 }
 
 console.log(person)
-    //fetch family member names
+    // fetch family member names
     useEffect(() => {
         if (family !== null) {
         fetch(`/family/${family.id}/users`).then((response) => {
@@ -27,17 +27,17 @@ console.log(person)
       },[family]);
       console.log(names)
       
-      useEffect(() => {
-        if (names !== undefined) {
-          setMapNames(names.map((users) => {
-            return(
-                <option value={users.id}>{users.name}</option>
-            )
-           }))
-        } else {
-            console.log("no users")
-        }
-      },[names]);
+    //   useEffect(() => {
+    //     if (names !== undefined) {
+    //       setMapNames(names.map((users) => {
+    //         return(
+    //             <option value={users.id}>{users.name}</option>
+    //         )
+    //        }))
+    //     } else {
+    //         console.log("no users")
+    //     }
+    //   },[names]);
 
     function onSubmit(e) {
         e.preventDefault()

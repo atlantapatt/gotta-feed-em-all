@@ -1,25 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PetCard from "./PetCard";
+import './Home.css'
 
-function HomePage({myPets, setMyPets, url, setUrl}) {
+function HomePage({myPets, names, url, setUrl}) {
+  const [fact, setFact] = useState()
+  const [familyNames, setFamilyNames] = useState()
     //fix so only account associeted pets show
     //Mochi Soba show for every account
 let emptyArray = (myPets.length == 0)
 
 
-// console.log(myPets)
-// console.log(myPets.length)
+useEffect(() => {
+        fetch('https://dog-api.kinduff.com/api/facts?number=200').then((r) => {
+          if(r.ok) {
+            r.json().then((fact) => setFact(fact.facts[Math.floor(Math.random() * (200 - 1) + 1)]))
+          }
+        })
 
+},[setUrl]);
 
-
-// useEffect(() => {
-//     fetch("/me").then((response) => {
-//       if (response.ok) {
-//         response.json().then((user) => setMyPets(user.pets));
-//       } 
-//     });
-//   },[]);
-
+useEffect(() => {
+  if (names !== undefined) {
+    setFamilyNames(names.map((users) => {
+      return(
+          <p>{users.name}</p>
+      )
+     }))
+  } else {
+      setFamilyNames('no other family members')
+  }
+},[names]);
     
   let mappedPets = myPets.map((pet) => {
     return(
@@ -34,7 +44,20 @@ console.log(emptyArray)
 
     return (
         <div className="home-div">
-            {emptyArray ? noPets : mappedPets}
+          <div className="mypets">
+            <h4>MY PETS</h4>
+              {emptyArray ? noPets : mappedPets}
+          </div>
+          <div className="side">
+            <div className="family">
+              <h5>MY FAMILY:</h5>
+              {familyNames}
+            </div>  
+            <div className="pet-facts">
+              <h5>PET FACT:</h5>
+              <p>{fact}</p>
+            </div>
+          </div>
         </div>
     )
 

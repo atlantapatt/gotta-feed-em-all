@@ -1,3 +1,20 @@
 .home-div{
-    padding-top: 15%;
+        margin-left: 5%;
+        display: flex;
+}
+
+.pet-facts {
+    width: 200px;
+}
+
+.family {
+    width: 200px;
+    text-align: end;
+}
+
+.side {
+    padding-left: 67%;
+    margin-left: 10%;
+    position: fixed;
+    text-align: end;
 }
