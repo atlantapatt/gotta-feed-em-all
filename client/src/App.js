@@ -117,16 +117,24 @@ useEffect(() => {
   }
 },[user]);
 
+console.log(family.id)
 //sometimes causes errors
     useEffect(() => {
         if (family !== null) {
-        fetch(`/family/${family.id}/users`).then((response) => {
-          if (response.ok) {
-            response.json().then((user) => setNames(user));
-          }
-        })};
+          if (family.id !== undefined) {
+          fetch(`/family/${family.id}/users`).then((r) => {
+            if (!r.ok) {
+            console.log('error')
+            } else {
+              r.json().then((user) => setNames(user))
+            }
+        })
+      }
+    }
       },[family]);
- 
+
+
+
   useEffect(() => {
     if (user !== null) {
       fetch(`/family/${family.last_name}/pets`).then((response) => {
