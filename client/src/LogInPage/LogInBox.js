@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import './LogInBox.css'
 
 function LogInBox({setSignIn, user, setUser, family, setFamily}) {
     const [username, setUsername] = useState("")
@@ -33,22 +34,10 @@ function LogInBox({setSignIn, user, setUser, family, setFamily}) {
         
     }
 
-    // function fetchFamily() {
-    //     fetch(`/family/${famID}`).then((r) => {
-    //         if (r.ok) {
-    //             r.json().then((family) => setFamily(family))
-    //         }
-    //     })
-    // }
-
-// function handleSubmit() {
-//     submitData()
-//     fetchFamily()
-// }
 
 let myErrors = errors.map((err) => {
     return(
-      <p>{err}</p>
+      <p className="errors">{err}</p>
     )
   }) 
 
@@ -57,16 +46,20 @@ let myErrors = errors.map((err) => {
     return (
         <div className="login-form">
             <h4>Please Login</h4>
-                <form onSubmit={submitData}>
-                    <label>Username</label>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                    <label>Password</label>
-                    <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <button  >Submit</button>
+                <form className="form" onSubmit={submitData}>
+                    <div className="inputs">
+                        <label>Username: </label>
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                        <br></br>
+                        <label>Password: </label>
+                        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <br></br>
+                    </div>
+                    <button className="btn">Submit</button>
                     <form className="error-form">
                     {myErrors}
                     </form>
-                    <p onClick={() => setSignIn(true)}>Not a user? Click here to sign up.</p>
+                    <p className="click" onClick={() => setSignIn(true)}>Not a user? Click here to sign up.</p>
                 </form>
         </div>        
     )

@@ -1,3 +1,4 @@
+import './FamilyButtons.css'
 function FamilyButtons({setShowChoice, setIsNewFamily}) {
     function routeExisting() {
         setShowChoice(false)
@@ -11,11 +12,12 @@ function FamilyButtons({setShowChoice, setIsNewFamily}) {
 
     return ( 
         
-        <div>
+        <div className="create-join">
             <p>Please Create or Join an Existing Family</p>
-            <button onClick={(() => routeNew())}>Create New Family</button>
-            <button onClick={(() => routeExisting())}>Join Existing Family</button>
-            
+            <div className="buttons">
+                <button id='button' onClick={(() => routeNew())}>Create New Family</button>
+                <button id='button' onClick={(() => routeExisting())}>Join Existing Family</button>
+            </div>
         </div>
      );
 }

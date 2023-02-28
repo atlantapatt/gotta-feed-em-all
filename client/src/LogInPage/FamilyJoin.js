@@ -18,18 +18,19 @@ function fetchFamily(){
         fetchFamily()
     }
 
-    console.log(family)
+    
 
     return ( 
         
             <div className="existing-family">
                 <p>Please enter your family name and password.</p>
-                <form>
-                    <label>Family Name</label>
+                <form className="form">
+                    <label>Family Name: </label>
                     <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
                     <br></br>
-                    <label>Family Password</label>
+                    <label>Family Password: </label>
                     <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
+                    <br></br>
                     <button onClick={(() => onSubmit())}>Submit</button>
                 </form>
             </div>       

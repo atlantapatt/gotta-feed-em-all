@@ -22,13 +22,14 @@ function FamilySignUp({setSignUp, familyName, setFamilyName, familyPassword, set
         <div>
             <div className="new-family">
                 <p>Please create your family name and password.</p>
-                <form>
-                    <label>Family Name</label>
+                <form className="form">
+                    <label>Family Name: </label>
                     <input id="family-name" type='text' value={familyName} onChange={(e) => setFamilyName(e.target.value)} ></input>
                     <br></br>
-                    <label>Family Password</label>
+                    <label>Family Password: </label>
                     <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
-                    <button onClick={(() => onSubmit())}>Submit</button>
+                    <br></br>
+                    <button className="btn" onClick={(() => onSubmit())}>Submit</button>
                 </form>
             </div>       
         </div>

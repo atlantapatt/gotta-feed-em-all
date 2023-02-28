@@ -1,0 +1,19 @@
+.family-div{
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
+    background: #DADADA;
+    padding: 15px;
+    margin-right: 35%;
+    margin-left: 35%;
+    }
+    body#tinymce {
+    background: #FFFFFF
+}
+
+.click{
+    margin-top: 5%;
+}
+.click:hover {
+    text-decoration: underline;
+
+}
