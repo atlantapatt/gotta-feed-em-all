@@ -32,7 +32,11 @@ class FamiliesController < ApplicationController
 
     def show
         family = Family.find_by(last_name: params[:last_name])
-        render json: family, status: :ok
+        if family&.authenticate(params[:password])
+            render json: family, status: :ok
+        else
+            render json: {errors: ["Invalid Family Name or Password"]}, status: :unauthorized
+        end
     end
 
     private

@@ -10,9 +10,7 @@ body#tinymce {
 background: #FFFFFF
 }
 
-.inputs{
-    margin: 5%;
-}
+
 
 .btn {
     background: #a3a3a3;
@@ -30,6 +28,7 @@ background: #FFFFFF
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     border: none;
+    margin-top: 5%;
   }
   
   .btn:hover {

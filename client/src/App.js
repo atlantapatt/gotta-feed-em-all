@@ -21,62 +21,7 @@ function App() {
   const [familyName, setFamilyName] = useState("")
   const [petSchedule, setPetSchedule] = useState()
   const [names, setNames] = useState()
-  const BASESCHEDULE = [{
-    day: 1,
-    AMorPM: 1, 
-},
-{
-    day: 1,
-    AMorPM: 2, 
-},
-{
-    day: 2,
-    AMorPM: 1, 
-},
-{
-    day: 2,
-    AMorPM: 2, 
-},
-{
-    day: 3,
-    AMorPM: 1, 
-},
-{
-    day: 3,
-    AMorPM: 2, 
-},
-{
-    day: 4,
-    AMorPM: 1, 
-},
-{
-    day: 4,
-    AMorPM: 2, 
-},
-{
-    day: 5,
-    AMorPM: 1, 
-},
-{
-    day: 5,
-    AMorPM: 2, 
-},
-{
-    day: 6,
-    AMorPM: 1, 
-},
-{
-    day: 6,
-    AMorPM: 2, 
-},
-{
-    day: 7,
-    AMorPM: 1, 
-},
-{
-    day: 7,
-    AMorPM: 2, 
-}]
+
   //set state to have a week pet schedule with everything filled but the name and ped id as null
 
 
@@ -117,7 +62,6 @@ useEffect(() => {
   }
 },[user]);
 
-console.log(family.id)
 //sometimes causes errors
     useEffect(() => {
         if (family !== null) {
@@ -151,6 +95,7 @@ console.log(myPets)
 console.log(family)
 console.log(user == null)
 
+
     useEffect(() => {
       fetch("/me").then((response) => {
         if (response.ok) {
@@ -183,7 +128,7 @@ console.log(user == null)
   // window.React2 = require('react');
   // console.log(window.React1 === window.React2);
 
-  if (!user) return <Login family={family} setFamily={setFamily} setUser={setUser} myPets={myPets} />
+if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} family={family} setFamily={setFamily} setUser={setUser} myPets={myPets} />
 
 
   return (
@@ -203,7 +148,7 @@ console.log(user == null)
         <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
       </Route>
       <Route exact path='/login'>
-        <Login setUser={setUser} />
+        <Login setFamilyName={setFamilyName} setUser={setUser} />
       </Route>
       <Route exact path={url}>
         <SinglePetCard setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
@@ -212,7 +157,7 @@ console.log(user == null)
         <FamilySignUp />
       </Route>
       <Route exact path='/join'>
-        <FamilyJoin />
+        <FamilyJoin setFamilyName={setFamilyName} />
       </Route>
       <Route exact path='/addschedule'>
         <AddSchedule setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />

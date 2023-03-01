@@ -1,3 +1,4 @@
+import './Family.css'
 function FamilySignUp({setSignUp, familyName, setFamilyName, familyPassword, setFamilyPassword, family, setFamily}) {
     function postFamily() {
         //add more into the form?

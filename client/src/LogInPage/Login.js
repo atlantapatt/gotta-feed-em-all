@@ -8,7 +8,8 @@ const [signUp, setSignUp] = useState(true)
 const [signIn, setSignIn] = useState(false)
 const [isNewFamily , setIsNewFamily] = useState(null)
 
-console.log(signIn)
+console.log(familyName)
+
     return(
         <div className="login-div" >
             <header>WELCOME</header>
