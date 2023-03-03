@@ -6,7 +6,7 @@ let myErrors
 
 function fetchFamily(e){
     e.preventDefault()
-    fetch(`/families/${familyName}`).then((r) => {
+    fetch(`/families/${familyName}?last_name=${familyName}&password=${familyPassword}`).then((r) => {
                 if (r.ok) {
                     r.json().then((family) => setFamily(family))
                     setSignUp(false)

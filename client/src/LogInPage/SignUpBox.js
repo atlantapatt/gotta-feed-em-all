@@ -59,6 +59,7 @@ function signUp(e) {
 }
 
 
+
     // function newFamily() {
     //     return (
     //         <div className="new-family">
@@ -74,18 +75,18 @@ function signUp(e) {
 
 
     return(
-        <div>
+        <div className="login-form">
             <h4>Please Sign Up</h4>
             {/* <button onClick={getFamily}>TEST</button> */}
                 <form onSubmit={signUp}>
-                    <label>Username</label>
+                    <label>Username: </label>
                     <input id="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/> <br></br>
-                    <label>Password</label>
+                    <label>Password: </label>
                     <input id="password" type="text" value={password} onChange={(e) => setPassword(e.target.value)}/> <br></br>
-                    <label>Confirm Password</label>
+                    <label>Confirm Password: </label>
                     <input id="password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
                     <br></br>
-                    <label>Name</label>
+                    <label>Name: </label>
                     <input id="name" value={name} onChange={(e) => setName(e.target.value)}></input>
                     <br></br>
                     {/* <label>Create New Family</label>
@@ -94,11 +95,8 @@ function signUp(e) {
                     <input type='radio' checked={false === click} onChange={(() => setClick(!click))}></input>
                     <br></br>
                     {click ? newFamily() : existingFamily()} */}
-                    <button>Submit</button>
-                    <p onClick={() => setSignIn(false)}>Already a user? Click here.</p>
-                </form>
-                <form>
-                
+                    <button className="btn">Submit</button>
+                    <p className="click" onClick={() => setSignIn(false)}>Already a user? Click here.</p>
                 </form>
         </div> 
     )
