@@ -44,6 +44,9 @@ console.log(emptyArray)
 
     return (
         <div className="home-div">
+          <div className="slideshow">
+            <p>Slideshow</p>
+          </div>
           <div className="mypets">
             <h4>MY PETS</h4>
               {emptyArray ? noPets : mappedPets}

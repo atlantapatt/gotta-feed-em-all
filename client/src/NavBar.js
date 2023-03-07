@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useHistory} from "react-router-dom";
+import DropdownMenu from "./DropdownMenu";
 import './NavBar.css'
 
 function NavBar({family, user, setUser,setUrl}) {
+    const [open, setOpen] = useState(false)
 
     const history = useHistory()
 
@@ -12,7 +14,6 @@ function NavBar({family, user, setUser,setUrl}) {
         }).then(() => setUser(null));
         history.push('/')
       }
-
 
     function addPetRoute() {
         let path = '/addpet'
@@ -41,15 +42,24 @@ function NavBar({family, user, setUser,setUrl}) {
         <div className="nav">
             <div className="nav-items">
                 <p className="welcome">Welcome {user.name}!</p>
-                {familyLoad()}
                 <div className="img">
                     <img className="logo" onClick={goHomeRoute} src='./MUTT_NOODLE_IMG.png' />
                 </div>
-                <p className="account" onClick={myAccountRoute}>My Account</p>
+                <div className="dropdown-trigger" onClick={() => {setOpen(!open)}}>
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
+                    <ul>
+                        <DropdownMenu icon='fa-regular fa-user' click={myAccountRoute} text='My Account' />
+                        <DropdownMenu icon='fa-solid fa-dog' click={addPetRoute} text="Add Pet" />
+                        <DropdownMenu icon='fa-solid fa-right-from-bracket' click={handleLogout} text='LogOut' />    
+                    </ul>
+                </div>
+                {/* <p className="account" onClick={myAccountRoute}>My Account</p>
                 <div className="button">
                     <button onClick={addPetRoute}>ADD PET</button>
                     <button className="logout" onClick={handleLogout}>LOG OUT</button>
-                </div>
+                </div> */}
             </div>
         </div>
      );

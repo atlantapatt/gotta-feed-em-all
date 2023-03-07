@@ -17,32 +17,84 @@
 }
 
 p {
-    margin: 2%;
+    /* margin: 2%;
     position: relative;
-    width: auto;
+    width: auto; */
     
 }
 
 .welcome {
-    margin-left: -70%;
+    margin-left: -100%;
     padding-left: 25%;
 }
 
 .family {
     text-align: center;
+    padding-left: 10%;
+    width: max-content;
+    
     
 }
 
 .logo {
-    margin-left: 100%;
+    margin-left: 180%;
     size: 5px;
 }
 
-img {
-    height: 250px;
-
+.dropdown-trigger{
+    margin-left: 275%;
 }
 
+.dropdown-menu{
+    position: absolute;
+    top: 120px;
+    left: 675px;
+    background-color: #cccccc;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 200px;
+    z-index: 1;
+}
+
+.dropdown-menu ul li:hover{
+    color: rgb(212, 33, 9);
+    cursor: pointer;
+}
+
+.dropdown-menu::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    background: var(--secondary-bg);
+    transform: rotate(45deg);
+}
+
+.dropdown-menu.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed) ease;
+}
+.dropdown-menu.inactive{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed) ease;
+}
+.dropdown-item{
+    display: flex;
+    margin: 10px auto;
+}
+
+.dropdown-item i{
+    max-width: 20px;
+    margin-top: 18px;
+    margin-right: 10px;
+    transition: var(--speed);
+}
 .account{
    margin-left: 80%;
 }
