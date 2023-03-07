@@ -16,10 +16,32 @@
     background-color: blueviolet;
     width: 200px;
     height: 400px;
+    
 }
+
+/* .slideshow img {
+    animation: fadeinout 9s infinite;
+}
+
+@keyframes fadeinout
+{
+  0%{
+    opacity:0;
+  }
+  50%
+  {
+    opacity:1;
+  }
+  100%
+  {
+    opacity:0;
+  }
+} */
+
 .mypets{
     text-align: center;
-    margin-left: 28%;    
+    margin-left: 28%; 
+    z-index: 1;   
 }
 
 .side {

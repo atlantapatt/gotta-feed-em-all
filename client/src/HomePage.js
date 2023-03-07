@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import PetCard from "./PetCard";
 import './Home.css'
+import SlideShow from "./SlideShow";
 
 function HomePage({myPets, names, url, setUrl}) {
   const [fact, setFact] = useState()
   const [familyNames, setFamilyNames] = useState()
+  const [petImages, setPetImages] = useState('together.jpg')
     //fix so only account associeted pets show
     //Mochi Soba show for every account
 let emptyArray = (myPets.length == 0)
@@ -18,6 +20,7 @@ useEffect(() => {
         })
 
 },[setUrl]);
+
 
 useEffect(() => {
   if (names !== undefined) {
@@ -39,13 +42,13 @@ useEffect(() => {
 
  let noPets = <div className="no-pets"><p>Add a pet to get started!</p></div>
  
-console.log(emptyArray)
-// console.log(mappedPets)
+
 
     return (
         <div className="home-div">
           <div className="slideshow">
-            <p>Slideshow</p>
+            <p>Our Pet Buddies!</p>
+            {/* <SlideShow /> */}
           </div>
           <div className="mypets">
             <h4>MY PETS</h4>

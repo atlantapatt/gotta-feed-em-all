@@ -9,9 +9,7 @@ function PetCard({pet, url, setUrl, petName}) {
     // console.log(petName)
 
     let history = useHistory()
-    console.log(url)
-    console.log(pet.name)
-    console.log(petName)
+
 
     function pushHistory(){
         history.push(url)
