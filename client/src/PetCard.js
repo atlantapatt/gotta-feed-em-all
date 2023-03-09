@@ -11,9 +11,6 @@ function PetCard({pet, url, setUrl, petName}) {
     let history = useHistory()
 
 
-    function pushHistory(){
-        history.push(url)
-    }
 
     function routeChange() {
         history.push(url)
@@ -25,9 +22,6 @@ function PetCard({pet, url, setUrl, petName}) {
     
    }
 
-   function noURL() {
-    setUrl("")
-   }
 
    
 

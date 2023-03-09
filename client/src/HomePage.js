@@ -7,6 +7,7 @@ function HomePage({myPets, names, url, setUrl}) {
   const [fact, setFact] = useState()
   const [familyNames, setFamilyNames] = useState()
   const [petImages, setPetImages] = useState('together.jpg')
+
     //fix so only account associeted pets show
     //Mochi Soba show for every account
 let emptyArray = (myPets.length == 0)
@@ -19,7 +20,7 @@ useEffect(() => {
           }
         })
 
-},[setUrl]);
+},[]);
 
 
 useEffect(() => {
@@ -43,12 +44,11 @@ useEffect(() => {
  let noPets = <div className="no-pets"><p>Add a pet to get started!</p></div>
  
 
-
     return (
         <div className="home-div">
           <div className="slideshow">
             <p>Our Pet Buddies!</p>
-            {/* <SlideShow /> */}
+            <SlideShow />
           </div>
           <div className="mypets">
             <h4>MY PETS</h4>

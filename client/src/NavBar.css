@@ -1,7 +1,8 @@
 .nav {
    width: 100%;
    position: relative;
-   height: 200px;
+   height: 100px;
+   background-color: white;
 }
 .nav-items {
     align-items: center;
@@ -10,18 +11,10 @@
     position: relative;
     margin-right: 2%;
     margin-left: 2%;
-    
-    /* width: auto; */
     left: 25%;
     
 }
 
-p {
-    /* margin: 2%;
-    position: relative;
-    width: auto; */
-    
-}
 
 .welcome {
     margin-left: -100%;
@@ -38,8 +31,11 @@ p {
 
 .logo {
     margin-left: 180%;
+    margin-top: 15px;
     size: 5px;
+    height: 85px;
 }
+
 
 .dropdown-trigger{
     margin-left: 275%;
@@ -47,7 +43,7 @@ p {
 
 .dropdown-menu{
     position: absolute;
-    top: 120px;
+    top: 80px;
     left: 675px;
     background-color: #cccccc;
     border-radius: 25px;

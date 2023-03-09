@@ -1,52 +1,53 @@
 .home-div{
-        margin-left: 5%;
-        display: flex;
+    margin-left: 5%;
+    display: flex;
+    margin-left: 0;
+    height: 511px;
+    margin-top: 10px;
+        
 }
 
 .pet-facts {
     width: 200px;
+    text-align: end;
+    margin-left: 20%;
 }
 
 .family {
     width: 200px;
     text-align: end;
+    margin-left: 10%;
 }
 
 .slideshow{
-    background-color: blueviolet;
-    width: 200px;
+    margin-left: 10px;
+    width: 250px;
     height: 400px;
     
 }
 
-/* .slideshow img {
-    animation: fadeinout 9s infinite;
+.slideshow p {
+  text-align: center;
 }
 
-@keyframes fadeinout
-{
-  0%{
-    opacity:0;
-  }
-  50%
-  {
-    opacity:1;
-  }
-  100%
-  {
-    opacity:0;
-  }
-} */
 
 .mypets{
     text-align: center;
-    margin-left: 28%; 
-    z-index: 1;   
+    margin-left: 26%; 
+    z-index: 1;
+    font-size: large;
+    margin-top: -1%;
+}
+
+.pet-name:hover{
+  color: #9c3b3e;
+  cursor: pointer;
 }
 
 .side {
-    padding-left: 67%;
-    margin-left: 10%;
-    position: fixed;
+    padding-left: 13%;
+    margin-left: 15%;
+    position: flex;
     text-align: end;
+    z-index: -1;
 }

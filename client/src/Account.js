@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Editing from "./Editing";
 import Popup from "./Popup";
+import './Account.css'
 
 function Account({user, setUser}) {
     const [isOpen, setIsOpen]= useState(false)

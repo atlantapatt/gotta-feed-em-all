@@ -43,7 +43,7 @@ function NavBar({family, user, setUser,setUrl}) {
             <div className="nav-items">
                 <p className="welcome">Welcome {user.name}!</p>
                 <div className="img">
-                    <img className="logo" onClick={goHomeRoute} src='./MUTT_NOODLE_IMG.png' />
+                    <img className="logo" onClick={goHomeRoute} src='./MUTT_NOODLE_thin.png' />
                 </div>
                 <div className="dropdown-trigger" onClick={() => {setOpen(!open)}}>
                     <i class="fa-solid fa-user"></i>
@@ -55,11 +55,6 @@ function NavBar({family, user, setUser,setUrl}) {
                         <DropdownMenu icon='fa-solid fa-right-from-bracket' click={handleLogout} text='LogOut' />    
                     </ul>
                 </div>
-                {/* <p className="account" onClick={myAccountRoute}>My Account</p>
-                <div className="button">
-                    <button onClick={addPetRoute}>ADD PET</button>
-                    <button className="logout" onClick={handleLogout}>LOG OUT</button>
-                </div> */}
             </div>
         </div>
      );
