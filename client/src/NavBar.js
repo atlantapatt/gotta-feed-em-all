@@ -18,6 +18,7 @@ function NavBar({family, user, setUser,setUrl}) {
     function addPetRoute() {
         let path = '/addpet'
         history.push(path)
+        setOpen(false)
     }
 
     function goHomeRoute() {
@@ -29,15 +30,11 @@ function NavBar({family, user, setUser,setUrl}) {
     function myAccountRoute() {
         let account = '/user'
         history.push(account)
+        setOpen(false)
     }
-    function familyLoad() {
-        if (family !== null) {
-            return (
-                <p className="family">You are part of the {family.last_name} family!</p>
+    
 
-            )
-        }
-    }
+
     return ( 
         <div className="nav">
             <div className="nav-items">

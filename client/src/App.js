@@ -21,6 +21,8 @@ function App() {
   const [familyName, setFamilyName] = useState("")
   const [petSchedule, setPetSchedule] = useState()
   const [names, setNames] = useState()
+  const [familyNames, setFamilyNames] = useState()
+
 
   //set state to have a week pet schedule with everything filled but the name and ped id as null
 
@@ -106,6 +108,19 @@ console.log(user == null)
       });
     },[]);
 
+
+    useEffect(() => {
+      if (names !== undefined) {
+        setFamilyNames(names.map((users) => {
+          return(
+              <p>{users.name}</p>
+          )
+         }))
+      } else {
+          setFamilyNames('no other family members')
+      }
+    },[names]);
+
  
 
     function handleAddPet(pet) {
@@ -123,7 +138,7 @@ console.log(user == null)
 //     console.log(user)
 
     
-
+console.log(familyName)
   // require('react-dom');
   // window.React2 = require('react');
   // console.log(window.React1 === window.React2);
@@ -136,13 +151,13 @@ if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} f
     <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/user'>
-        <Account setUser={setUser} user={user} />
+        <Account family={family} familyNames={familyNames} setUser={setUser} user={user} />
       </Route>
       <Route exact path='/schedules'>
         <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
       </Route>
       <Route exact path='/'>
-        <HomePage names={names} url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
+        <HomePage familyNames={familyNames} names={names} url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
       </Route>
       <Route exact path='/addpet'>
         <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />

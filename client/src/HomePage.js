@@ -42,7 +42,7 @@ useEffect(() => {
   }) 
 
  let noPets = <div className="no-pets"><p>Add a pet to get started!</p></div>
- 
+ console.log(fact)
 
     return (
         <div className="home-div">

@@ -8,10 +8,12 @@ function Popup({togglePopup}) {
         <div className="popup-box">
             <div className="box">
                 <span className="close-icon" onClick={togglePopup}>x</span>
-                <b className='delete'>Are you sure you wish to delete your account?</b>
+                <b className='delete'>Are you sure you wish to permanently delete your account?</b>
                 <br></br>
-                <button className='button' onClick={handleDelete}>YES</button>
-                <button className='button' onClick={togglePopup}>NO</button>
+                <div className='buttons'>
+                    <button id='yes' onClick={handleDelete}>YES</button>
+                    <button id='no' onClick={togglePopup}>NO</button>
+                </div>
             </div>
         </div>
      );

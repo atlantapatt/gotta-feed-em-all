@@ -36,3 +36,19 @@
     border: 1px solid #999;
     font-size: 20px;
   }
+
+.buttons{
+  text-align: end;
+}
+
+.buttons button{
+  cursor: pointer;
+}
+
+#yes:hover{
+  color: red;
+}
+
+#no:hover{
+  color: #9c3b3e;
+}

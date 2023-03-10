@@ -24,7 +24,7 @@ fetch(`/user/${user.id}`, {
   
 }
     return ( 
-        <div>
+        <div className="editing">
             <form onSubmit={handleSubmit}>
                 <lable>Enter New Username:</lable>
                 <input value={newUsername} onChange={((e) => setNewUsername(e.target.value))} type='text'></input>
@@ -32,7 +32,7 @@ fetch(`/user/${user.id}`, {
                 <lable>Change your name: </lable>
                 <input value={newName} onChange={((e) => setNewName(e.target.value))} type='text'></input>
                 <br></br>
-                <button>Save</button>
+                <button>{<i class="fa-solid fa-check-to-slot"></i>} Save</button>
             </form>
         </div>
      );
