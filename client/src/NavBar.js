@@ -25,6 +25,7 @@ function NavBar({family, user, setUser,setUrl}) {
         let path = '/'
         history.push(path)
         setUrl('/')
+        setOpen(false)
         
     }
     function myAccountRoute() {

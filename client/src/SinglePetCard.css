@@ -4,9 +4,23 @@ img {
 }
 
 .pet-info {
-    
+    margin-left: 15px;
 }
 
 .schedule-div{
     display: inline-flex;
+    margin-top: 10px;
+}
+
+.image{
+    border-radius: 50%;
+}
+
+.calendar{
+    margin-left: 80px;
+    margin-top: 25px;
+}
+
+.back-button{
+    margin-left: 15px;
 }

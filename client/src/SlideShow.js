@@ -80,7 +80,7 @@ function SlideShow() {
             <div style={slideStyles}></div>
             <div style={dotsContainerStyles}>
                 {dogsArray.map((slide, slideIndex) => (
-                    <div onClick={() => goToSlide(slideIndex)} style={dotStyles} key={slideIndex}>
+                    <div className="dot" onClick={() => goToSlide(slideIndex)} style={dotStyles} key={slideIndex}>
                         <i class="fa-solid fa-circle"></i>
                     </div>
                 ))}

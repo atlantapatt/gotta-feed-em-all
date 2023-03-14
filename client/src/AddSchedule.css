@@ -1,0 +1,51 @@
+.add-schedule{
+    
+}
+
+.back-button{
+    text-align: left;
+    margin-left: 15px;
+}
+
+.schedule-form{
+    text-align: center;
+    background-color: #a3a3a3;
+    width: 500px;
+    margin-left: 400px;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    border-radius: 5%;
+    -webkit-box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43); 
+box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43);
+}
+
+
+.submit-button{
+    margin-top: 15px;
+}
+
+#day-radio lable {
+    text-align: right;
+}
+
+#day-radio{
+    text-align: center;
+}
+
+#day-radio input{
+    align-items: center;
+    margin: 3px;
+    
+}
+
+.select{
+    margin-bottom: 15px;
+}
+
+.AMorPM {
+   padding-top: 20px;
+}
+
+.assignment{
+    padding-top: 20px;
+}

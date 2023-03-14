@@ -8,6 +8,12 @@
     padding: 2%;
 }
 
+#day {
+    width: 90px;
+    margin-top: -15px;
+    margin-bottom: 5px;
+}
+
 .time {
     display: inline-block;
     position: absolute;
@@ -15,3 +21,14 @@
     vertical-align: middle;
     padding: 1%;
 }
+
+.calendar{
+    background-color: #cccccc;
+    -webkit-box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43); 
+    box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43);
+    border-radius: 8.5%;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+}
+

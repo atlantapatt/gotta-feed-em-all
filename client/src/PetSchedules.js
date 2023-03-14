@@ -30,32 +30,32 @@ console.log(thursday)
     return ( 
         <div className="days">
                 <div id='day' className="monday">
-                    <p>Monday</p>
+                    <h5>Monday</h5>
                     {mapArray(monday)}
                 </div>
                 <div id='day' className="tuesday">
-                    <p>Tuesday</p>
+                    <h5>Tuesday</h5>
                     {mapArray(tuesday)}
                 </div>
                 <div id='day' className="wednesday">
-                    <p>Wednesday</p>
+                    <h5>Wednesday</h5>
                     {mapArray(wednesday)}
                 </div>
                 <div id='day' className="thursday">
-                    <p>Thursday</p>
+                    <h5>Thursday</h5>
                     {mapArray(thursday)}
                     
                 </div>
                 <div id='day' className="friday">
-                    <p>Friday</p>
+                    <h5>Friday</h5>
                     {mapArray(friday)}
                 </div>
                 <div id='day' className="saturday">
-                    <p>Saturday</p>
+                    <h5>Saturday</h5>
                     {mapArray(saturday)}
                 </div>
                 <div id='day' className="sunday">
-                    <p>Sunday</p>
+                    <h5>Sunday</h5>
                     {mapArray(sunday)}
                 </div>
                 

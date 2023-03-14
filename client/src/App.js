@@ -151,7 +151,7 @@ if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} f
     <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
     <Switch>
       <Route exact path='/user'>
-        <Account family={family} familyNames={familyNames} setUser={setUser} user={user} />
+        <Account myPets={myPets} family={family} familyNames={familyNames} setUser={setUser} user={user} />
       </Route>
       <Route exact path='/schedules'>
         <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
@@ -175,7 +175,7 @@ if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} f
         <FamilyJoin setFamilyName={setFamilyName} />
       </Route>
       <Route exact path='/addschedule'>
-        <AddSchedule setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
+        <AddSchedule familyNames={familyNames} setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
       </Route>
       
     </Switch>

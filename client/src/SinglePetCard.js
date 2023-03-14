@@ -94,7 +94,7 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
 console.log(img)
     return ( 
       <div className="petcard">
-        <button onClick={goHomeRoute}>Back</button>
+        <button className='back-button' onClick={goHomeRoute}>Back</button>
         <div className="schedule-div">
             <div className="pet-info">
               <br></br>

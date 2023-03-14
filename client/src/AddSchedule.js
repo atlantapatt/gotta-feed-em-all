@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import './AddSchedule.css'
 
 
-function AddSchedule({onePet, url, family, handleAddSchedule, names, setNames}) {
+function AddSchedule({familyNames, onePet, url, family, handleAddSchedule, names, setNames}) {
     const [day, setDay] = useState()
     const [time, setTime] = useState()
     const [person, setPerson] = useState()
@@ -16,6 +17,7 @@ function routeChange() {
 }
 
 console.log(person)
+console.log(familyNames)
     // fetch family member names
     useEffect(() => {
         if (family !== null) {
@@ -38,6 +40,14 @@ console.log(person)
     //         console.log("no users")
     //     }
     //   },[names]);
+
+    useEffect(() => {
+        setMapNames(names.map((users) => {
+            return(
+                <option value={users.id}>{users.username}</option>
+            )
+        }))
+    },[])
 
     function onSubmit(e) {
         e.preventDefault()
@@ -64,12 +74,12 @@ console.log(person)
         })
     }
     return ( 
-        <div>
-            <button onClick={routeChange}>Go Back</button>
-            <form onSubmit={onSubmit}>
+        <div className="add-schedule">
+            <button className="back-button" onClick={routeChange}>Go Back</button>
+            <form className="schedule-form" onSubmit={onSubmit}>
                 <p>You are adding to {onePet.name}'s schedule.</p>
                 <div id="day-radio">
-                    <p>Select a Day of the Week</p>
+                    <p className="select">Select a Day of the Week</p>
                     <label>M</label>
                     <input onClick={((e) => setDay(e.target.value))} value={1} type='radio' name="day"></input>
                 </div>
@@ -97,21 +107,25 @@ console.log(person)
                     <label>Su</label>
                     <input onClick={((e) => setDay(e.target.value))} value={7} type='radio' name="day"></input>
                 </div>
-                <lable>AM or PM</lable>
-                <br></br>
-                <div className="time-radio">
-                    <lable>AM</lable>
-                    <input onClick={((e) => setTime(e.target.value))} name='time' type='radio' value={1}></input>
-                    <label>PM</label>
-                    <input onClick={((e) => setTime(e.target.value))} name='time' type='radio' value={2}></input>
+                    <div className='AMorPM'>
+                        <lable>AM or PM</lable>
+                        <br></br>
+                        <div className="time-radio">
+                            <lable>AM</lable>
+                            <input onClick={((e) => setTime(e.target.value))} name='time' type='radio' value={1}></input>
+                            <label>PM</label>
+                            <input onClick={((e) => setTime(e.target.value))} name='time' type='radio' value={2}></input>
+                    </div>
                 </div>
-                <lable>Person Assigned</lable>
-                <select onChange={((e) => setPerson(e.target.value))}>
-                   <option>Select Family Member</option>
-                   {mapNames}
-                </select>
-                <br></br>
-                <button>Submit</button>
+                <div className="assignment">
+                    <lable>Person Assigned</lable>
+                    <select onChange={((e) => setPerson(e.target.value))}>
+                        <option>Select Family Member</option>
+                        {mapNames}
+                    </select>
+                    <br></br>
+                </div>
+                <button className="submit-button">Submit</button>
             </form>
         </div>
      );

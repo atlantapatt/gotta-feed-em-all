@@ -30,6 +30,10 @@
   text-align: center;
 }
 
+.dot:hover{
+    color:#cccccc
+}
+
 
 .mypets{
     text-align: center;
