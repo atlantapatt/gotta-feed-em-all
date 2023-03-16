@@ -102,3 +102,38 @@
 .logout{
     background-color:#bc2d29;
 }
+
+.add-pet{
+    background-color: #cccccc;
+    text-align: center;
+    height: 200px;
+    width: 300px;
+    -webkit-box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43); 
+    box-shadow: 5px 1px 15px 5px rgba(0,0,0,0.43);
+    z-index: 1;
+    margin-left: 485px;
+    
+}
+
+.add-pet.inactive{
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: var(--speed) ease;
+}
+
+.add-pet.active{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: var(--speed) ease;
+    z-index: 1;
+    border-radius: 10%;
+
+}
+
+.add-pet-div{
+    padding-top: 15px;
+    /* border-radius: 50%; */
+}
+

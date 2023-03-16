@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useHistory} from "react-router-dom";
+import AddPet from "./AddPet";
 import DropdownMenu from "./DropdownMenu";
 import './NavBar.css'
 
 function NavBar({family, user, setUser,setUrl}) {
     const [open, setOpen] = useState(false)
+    const [addingPet, setAddingPet] = useState(false)
 
     const history = useHistory()
 
@@ -33,6 +35,11 @@ function NavBar({family, user, setUser,setUrl}) {
         history.push(account)
         setOpen(false)
     }
+
+    function pet() {
+        setAddingPet(!addingPet)
+        setOpen(false)
+    }
     
 
 
@@ -49,10 +56,13 @@ function NavBar({family, user, setUser,setUrl}) {
                 <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
                     <ul>
                         <DropdownMenu icon='fa-regular fa-user' click={myAccountRoute} text='My Account' />
-                        <DropdownMenu icon='fa-solid fa-dog' click={addPetRoute} text="Add Pet" />
+                        <DropdownMenu icon='fa-solid fa-dog' click={pet} text="Add Pet" />
                         <DropdownMenu icon='fa-solid fa-right-from-bracket' click={handleLogout} text='LogOut' />    
                     </ul>
                 </div>
+            </div>
+            <div className={`add-pet ${addingPet ? 'active' : 'inactive'}`}>
+                <AddPet pet={pet}/>
             </div>
         </div>
      );

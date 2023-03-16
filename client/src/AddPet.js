@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useHistory, useNavigate } from "react-router-dom";
+import './AddPet.css'
 
 
-function AddPet({setNewPet, newPet, myPets, handleAddPet, user, family}) {
+function AddPet({pet, setNewPet, newPet, myPets, handleAddPet, user, family}) {
     const [petType, setPetType] = useState(1)
     const [petName, setPetName] = useState("")
     const history = useHistory()
@@ -70,7 +71,10 @@ function petUser() {
     return ( 
         <div className="add-pet-div">
             <form onSubmit={onSubmit}>
+                <div onClick={pet} className="close">X</div>
+                <h4>Add Pet Here</h4>
                 <label>Pet Name</label>
+                <br></br>
                 <input type='text' value={petName} onChange={(e) => setPetName(e.target.value)}></input>
                 <br></br>
                 <select onChange={onChange}>
@@ -78,6 +82,7 @@ function petUser() {
                     <option value={2}>Cat</option>
                     <option value={3}>Other</option>
                 </select>
+                <br></br>
                 <button>SUBMIT</button>
             </form>
         </div>
