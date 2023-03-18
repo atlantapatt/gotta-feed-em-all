@@ -19,11 +19,15 @@ function Account({myPets, user, setUser, familyNames, family}) {
     return ( 
         <div className="account-div">
             <div className="side-div">
-                <div className="account-button" onClick={(() => setEditing(!editing))}>
-                    <div className="edit" >
+                <div className="account-button" >
+                    <div className="edit-div" onClick={(() => setEditing(!editing))}>
                         <i class="fa-solid fa-pen-to-square"></i>
                         <p>Edit My Account</p>
                     </div>
+                    {/* <div className="edit"  >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p>Edit My Account</p>
+                    </div> */}
                     <div className="delete" onClick={togglePopup}>
                         <i class="fa-solid fa-square-minus"></i>
                         <p>DELETE ACCOUNT</p>
@@ -50,8 +54,7 @@ function Account({myPets, user, setUser, familyNames, family}) {
                         <h4>Your Pets:</h4>
                         {pets}
                     </div>
-                </div>
-               
+                </div>  
              
            {editing ? <Editing setEditing={setEditing} setUser={setUser} user={user} /> : null}
         </div>

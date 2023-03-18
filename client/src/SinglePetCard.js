@@ -91,7 +91,7 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
         });
         } 
       },[setUrl]);
-console.log(img)
+console.log(petSchedule)
     return ( 
       <div className="petcard">
         <button className='back-button' onClick={goHomeRoute}>Back</button>

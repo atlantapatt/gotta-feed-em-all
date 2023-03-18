@@ -3,10 +3,8 @@ import PetCard from "./PetCard";
 import './Home.css'
 import SlideShow from "./SlideShow";
 
-function HomePage({myPets, names, url, setUrl}) {
-  const [fact, setFact] = useState()
-  const [familyNames, setFamilyNames] = useState()
-  const [petImages, setPetImages] = useState('together.jpg')
+function HomePage({myPets, names, url, setUrl, familyNames}) {
+  const [fact, setFact] = useState('A cat can jump up to seven times its height.')
 
     //fix so only account associeted pets show
     //Mochi Soba show for every account
@@ -23,17 +21,7 @@ useEffect(() => {
 },[]);
 
 
-useEffect(() => {
-  if (names !== undefined) {
-    setFamilyNames(names.map((users) => {
-      return(
-          <p>{users.name}</p>
-      )
-     }))
-  } else {
-      setFamilyNames('no other family members')
-  }
-},[names]);
+
     
   let mappedPets = myPets.map((pet) => {
     return(

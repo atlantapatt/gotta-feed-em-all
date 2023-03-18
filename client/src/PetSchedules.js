@@ -21,7 +21,8 @@ console.log(thursday)
         if (array !== undefined) {
        return array.map((schedule) => {
             return(
-                <p>{schedule.user}</p>
+                // console.log(schedule.user.name)
+                <p>{schedule.user.name}</p>
             )
            })
       }}

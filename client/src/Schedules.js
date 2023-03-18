@@ -21,8 +21,8 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
         history.push(path)
     }
 
-    const amObject = {AMorPM: 1, user: 'no user'}
-    const pmObject = {AMorPM: 2, user: 'no user'}
+    const amObject = {AMorPM: 1, user: {name: 'no user'}}
+    const pmObject = {AMorPM: 2, user: {name: 'no user'}}
 
     function indexA(array) {
         if (array !== undefined) {

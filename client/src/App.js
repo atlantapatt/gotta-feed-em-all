@@ -148,37 +148,37 @@ if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} f
 
   return (
   <div>
-    <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
-    <Switch>
-      <Route exact path='/user'>
-        <Account myPets={myPets} family={family} familyNames={familyNames} setUser={setUser} user={user} />
-      </Route>
-      <Route exact path='/schedules'>
-        <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
-      </Route>
-      <Route exact path='/'>
-        <HomePage familyNames={familyNames} names={names} url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
-      </Route>
-      <Route exact path='/addpet'>
-        <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
-      </Route>
-      <Route exact path='/login'>
-        <Login setFamilyName={setFamilyName} setUser={setUser} />
-      </Route>
-      <Route exact path={url}>
-        <SinglePetCard setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
-      </Route>
-      <Route exact path='/create'>
-        <FamilySignUp />
-      </Route>
-      <Route exact path='/join'>
-        <FamilyJoin setFamilyName={setFamilyName} />
-      </Route>
-      <Route exact path='/addschedule'>
-        <AddSchedule familyNames={familyNames} setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
-      </Route>
-      
-    </Switch>
+
+      <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
+      <Switch>
+        <Route exact path='/user'>
+          <Account myPets={myPets} family={family} familyNames={familyNames} setUser={setUser} user={user} />
+        </Route>
+        <Route exact path='/schedules'>
+          <Schedules url={url} petName={petName} myPets={myPets} setMyPets={setMyPets} petSchedule={petSchedule} setPetSchedule={setPetSchedule} />
+        </Route>
+        <Route exact path='/'>
+          <HomePage familyNames={familyNames} names={names} url={url} setUrl={setUrl} user={user} myPets={myPets} setMyPets={setMyPets}  />
+        </Route>
+        <Route exact path='/addpet'>
+          <AddPet family={family} setNewPet={setNewPet} newPet={newPet} myPets={myPets} setMyPets={setMyPets} user={user} handleAddPet={handleAddPet} />
+        </Route>
+        <Route exact path='/login'>
+          <Login setFamilyName={setFamilyName} setUser={setUser} />
+        </Route>
+        <Route exact path={url}>
+          <SinglePetCard setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
+        </Route>
+        <Route exact path='/create'>
+          <FamilySignUp />
+        </Route>
+        <Route exact path='/join'>
+          <FamilyJoin setFamilyName={setFamilyName} />
+        </Route>
+        <Route exact path='/addschedule'>
+          <AddSchedule familyNames={familyNames} setNames={setNames} names={names} handleAddSchedule={handleAddSchedule} user={user} family={family} url={url} onePet={onePet} />
+        </Route>
+      </Switch>
   </div>    
   );
 }

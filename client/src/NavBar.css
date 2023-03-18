@@ -3,15 +3,17 @@
    position: relative;
    height: 100px;
    background-color: white;
+   z-index: 0;
 }
 .nav-items {
     align-items: center;
     display: inline-flex;
-    margin-bottom: 5%;
+    /* margin-bottom: 5%; */
     position: relative;
     margin-right: 2%;
     margin-left: 2%;
     left: 25%;
+    height: 100px;
     
 }
 

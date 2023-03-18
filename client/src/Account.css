@@ -17,6 +17,7 @@
 
 .account-button{
     display: inline flex;
+    z-index: 2;
 }
 
 
@@ -25,14 +26,16 @@
     margin-right: 5px;
 }
 
-.edit{
+.edit-div {
     display: flex;
     margin-right: 10px;
     cursor: pointer;
     height: 35px;
+    z-index: 1;
+    width: 200px;
 }
 
-.edit:hover{
+.edit-div:hover{
   color: #9c3b3e;
 }
 
