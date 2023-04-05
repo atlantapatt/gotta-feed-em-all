@@ -22,6 +22,8 @@ function App() {
   const [petSchedule, setPetSchedule] = useState()
   const [names, setNames] = useState()
   const [familyNames, setFamilyNames] = useState()
+  const [famErrors, setFamErrors] = useState([])
+
 
 
   //set state to have a week pet schedule with everything filled but the name and ped id as null
@@ -31,7 +33,7 @@ function App() {
       setPetSchedule([...petSchedule, schedule])
       }
       
-        
+        console.log(petSchedule)
 
   let petName = url.split('/').pop()
   console.log(url)
@@ -69,10 +71,11 @@ useEffect(() => {
         if (family !== null) {
           if (family.id !== undefined) {
           fetch(`/family/${family.id}/users`).then((r) => {
-            if (!r.ok) {
-            console.log('error')
-            } else {
+            if (r.ok) {
               r.json().then((user) => setNames(user))
+            } else {
+              console.log('errors')
+              // r.json().then((err) => setFamErrors(err.errors))
             }
         })
       }
@@ -145,11 +148,12 @@ console.log(familyName)
 
 if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} family={family} setFamily={setFamily} setUser={setUser} myPets={myPets} />
 
+// console.log(setNewPet)
 
   return (
   <div>
 
-      <NavBar family={family} setUrl={setUrl} setUser={setUser} user={user}  />
+      <NavBar handleAddPet={handleAddPet} setNewPet={setNewPet} family={family} setUrl={setUrl} setUser={setUser} user={user}  />
       <Switch>
         <Route exact path='/user'>
           <Account myPets={myPets} family={family} familyNames={familyNames} setUser={setUser} user={user} />
@@ -167,10 +171,10 @@ if (!user) return <Login familyName={familyName} setFamilyName={setFamilyName} f
           <Login setFamilyName={setFamilyName} setUser={setUser} />
         </Route>
         <Route exact path={url}>
-          <SinglePetCard setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
+          <SinglePetCard handleAddSchedule={handleAddSchedule} setUrl={setUrl} url={url} petName={petName} petSchedule={petSchedule} setPetSchedule={setPetSchedule} onePet={onePet}/>
         </Route>
         <Route exact path='/create'>
-          <FamilySignUp />
+          <FamilySignUp famErrors={famErrors} setFamErrors={setFamErrors}/>
         </Route>
         <Route exact path='/join'>
           <FamilyJoin setFamilyName={setFamilyName} />

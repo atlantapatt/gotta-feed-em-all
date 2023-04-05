@@ -3,7 +3,7 @@ import Schedules from "./Schedules";
 import { useHistory} from "react-router-dom";
 import './SinglePetCard.css'
 
-function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
+function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl, handleAddSchedule}) {
     const [petName, setPetName] = useState()
     const [petType, setPetType] = useState()
     const [img, setImg] = useState()
@@ -90,7 +90,7 @@ function SinglePetCard({onePet, petSchedule, setPetSchedule, url, setUrl}) {
           }
         });
         } 
-      },[setUrl]);
+      },[onePet]);
 console.log(petSchedule)
     return ( 
       <div className="petcard">

@@ -49,12 +49,7 @@ console.log(familyNames)
         }))
     },[])
 
-    function onSubmit(e) {
-        e.preventDefault()
-        setSchedule()
-        routeChange()
-        
-    }
+    
     function setSchedule() {
         fetch("/schedule", {
             method: "POST",
@@ -72,6 +67,13 @@ console.log(familyNames)
         }).then((r) => {
             r.json().then((schedule) => handleAddSchedule(schedule))
         })
+    }
+    
+    function onSubmit(e) {
+        e.preventDefault()
+        setSchedule()
+        routeChange()
+        
     }
     return ( 
         <div className="add-schedule">

@@ -4,9 +4,10 @@ class SchedulesController < ApplicationController
         render json: schedule, status: :created
     end
 
+
     private
 
     def schedule_params
-        params.permit(:day, :AMorPM, :pet_id, :user, :isfed)
+        params.permit(:day, :AMorPM, :pet_id, :user, :user_id, :isfed)
     end
 end

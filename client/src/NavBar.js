@@ -4,12 +4,13 @@ import AddPet from "./AddPet";
 import DropdownMenu from "./DropdownMenu";
 import './NavBar.css'
 
-function NavBar({family, user, setUser,setUrl}) {
+function NavBar({family, user, setUser,setUrl, handleAddPet, setNewPet}) {
     const [open, setOpen] = useState(false)
     const [addingPet, setAddingPet] = useState(false)
 
     const history = useHistory()
 
+    console.log(setNewPet)
     function handleLogout() {
         fetch("/logout", {
           method: "DELETE",
@@ -62,7 +63,7 @@ function NavBar({family, user, setUser,setUrl}) {
                 </div>
             </div>
             <div className={`add-pet ${addingPet ? 'active' : 'inactive'}`}>
-                <AddPet pet={pet}/>
+                <AddPet setNewPet={setNewPet} handleAddPet={handleAddPet} family={family} pet={pet}/>
             </div>
         </div>
      );

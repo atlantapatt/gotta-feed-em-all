@@ -1,16 +1,20 @@
 function PetSchedules({amObject, pmObject, monday, tuesday, wednesday, thursday, friday, saturday, sunday, handleSchedule}) {
 
+    
 
-console.log(thursday)
+console.log(monday)
     function emptySchedule(array) {
-        if(array.length === 0) {
+        if (array.length === 0) {
+           
         let amArray = array.push(amObject)
         let pmArray = array.push(pmObject)
         return pmArray
         
+        } else {
+            console.log('full')
         }
       }
-      console.log(thursday)
+      console.log(emptySchedule(monday))
 
     function emptyHandleArray(array) {
         emptySchedule(array)
@@ -26,8 +30,8 @@ console.log(thursday)
             )
            })
       }}
-      console.log(mapArray(wednesday))
-      console.log(mapArray(thursday))
+      console.log(mapArray(monday))
+      console.log(wednesday)
     return ( 
         <div className="days">
                 <div id='day' className="monday">

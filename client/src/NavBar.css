@@ -9,7 +9,7 @@
     align-items: center;
     display: inline-flex;
     /* margin-bottom: 5%; */
-    position: relative;
+    position: absolute;
     margin-right: 2%;
     margin-left: 2%;
     left: 25%;
@@ -21,6 +21,7 @@
 .welcome {
     margin-left: -100%;
     padding-left: 25%;
+    padding-right: 5%;
 }
 
 .family {
@@ -32,15 +33,18 @@
 }
 
 .logo {
-    margin-left: 180%;
+    margin-left: 145%;
     margin-top: 15px;
     size: 5px;
     height: 85px;
+    position: relative;
 }
 
 
 .dropdown-trigger{
     margin-left: 275%;
+    cursor: pointer;
+    position: inherit;
 }
 
 .dropdown-menu{

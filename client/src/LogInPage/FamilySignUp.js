@@ -1,5 +1,8 @@
+import { useState } from 'react'
 import './Family.css'
 function FamilySignUp({setSignUp, familyName, setFamilyName, familyPassword, setFamilyPassword, family, setFamily}) {
+    const [famErrors, setFamErrors] = useState([])
+
     function postFamily() {
         //add more into the form?
         fetch('/family', {
@@ -12,13 +15,24 @@ function FamilySignUp({setSignUp, familyName, setFamilyName, familyPassword, set
                 password: familyPassword,
             }),
         }).then((r) => {
-            r.json().then((family) => setFamily(family))
+            if (r.ok){
+                 r.json().then((family) => setFamily(family))
+            } else {
+                r.json().then((error) => setFamErrors(error.errors))
+            }
+           
         })
     }
         function onSubmit() {
             setSignUp(false)
             postFamily()
         }
+
+        let myErrors = famErrors.map((err) => {
+            return(
+              <p className="errors">{err}</p>
+            )
+          }) 
     return ( 
         <div>
             <div className="new-family">
@@ -31,6 +45,10 @@ function FamilySignUp({setSignUp, familyName, setFamilyName, familyPassword, set
                     <input id="family-password" type='text' value={familyPassword} onChange={(e) => setFamilyPassword(e.target.value)}></input>
                     <br></br>
                     <button className="btn" onClick={(() => onSubmit())}>Submit</button>
+                    
+                </form>
+                <form className="error-form">
+                    {myErrors}
                 </form>
             </div>       
         </div>

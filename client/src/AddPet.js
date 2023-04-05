@@ -9,7 +9,7 @@ function AddPet({pet, setNewPet, newPet, myPets, handleAddPet, user, family}) {
     const history = useHistory()
     // const [petID, setPetID] = useState(newPet.id)
 
-    // console.log(petID)
+    console.log(setNewPet)
     
     // console.log(newPet.id)
     console.log(petType)
@@ -41,26 +41,26 @@ function petPost() {
     },[])
 }
 //change petuser to schedule as join table?
-function petUser() {
-    fetch("/petuser", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            user_id: user.id,
-            pet_id: newPet.id,
+// function petUser() {
+//     fetch("/petuser", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             user_id: user.id,
+//             pet_id: newPet.id,
 
-        }),
-    }).then((r) => {
-        r.json().then((pet) => console.log(pet))
-    },[])
-}
+//         }),
+//     }).then((r) => {
+//         r.json().then((pet) => console.log(pet))
+//     },[])
+// }
 
     function onSubmit(e) {
         e.preventDefault()
         petPost()
-        petUser()
+        // petUser()
         handleAddPet(newPet)
         setNewPet()
         goHomeRoute()

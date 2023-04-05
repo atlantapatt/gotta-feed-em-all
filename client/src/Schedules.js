@@ -11,6 +11,8 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
     const [friday, setFriday] = useState([])
     const [saturday, setSaturday] = useState([])
     const [sunday, setSunday] = useState([])
+  
+    const daysOfWeek = [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
 
     const history = useHistory()
    
@@ -35,46 +37,67 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
         }
     }
 
-    console.log(onePet)
+    console.log(indexA(monday))
+    console.log(petSchedule)
+
+    function mondayDay(){
+      setMonday(noSchedule(petSchedule.filter(schedule => schedule.day === 1)))
+    }
+
+    function tuesdayDay() {
+      setTuesday(noSchedule(petSchedule.filter(schedule => schedule.day === 2)))
+    }
+
+    function wednesdayDay() {
+      setWednesday(noSchedule(petSchedule.filter(schedule => schedule.day === 3)))
+    }
+
+    function thursdayDay() {
+      setThursday(noSchedule(petSchedule.filter(schedule => schedule.day === 4)))
+    }
+
+    function fridayDay() {
+      setFriday(noSchedule(petSchedule.filter(schedule => schedule.day === 5)))
+    }
+
+    function saturdayDay() {
+      setSaturday(noSchedule(petSchedule.filter(schedule => schedule.day === 6)))
+    }
+
+    function sundayDay() {
+      setSunday(noSchedule(petSchedule.filter(schedule => schedule.day === 7)))
+    }
 
     function days() {
       if (petSchedule !== undefined) {
         if (petSchedule !== []) {
-            petSchedule.filter(schedule => {
-               if (schedule.day === 1) {
-                setMonday(noSchedule([schedule]))
-            }
-            if (schedule.day === 2) {
-                setTuesday(noSchedule([schedule]))
-            } 
-            if (schedule.day === 3) {
-                setWednesday(noSchedule([schedule]))
-            }
-            if (schedule.day === 4) {
-                setThursday(noSchedule([schedule]))
-            }
-            if (schedule.day === 5) {
-                setFriday(noSchedule([schedule])) 
-            }
-            if (schedule.day === 6) {
-                setSaturday(noSchedule([schedule])) 
-            }
-            if (schedule.day === 7) {
-                setSunday(noSchedule([schedule]))  
-            } 
-            });
+            mondayDay()
+            tuesdayDay()
+            wednesdayDay()
+            thursdayDay()
+            fridayDay()
+            saturdayDay()
+            sundayDay()
         } else {
           setUrl(url)
         }
       }
     }
 
+    function checkDay() {
+      console.log(petSchedule.filter(schedule => schedule.day === 1))
+    }
+
+    function checkSchedule() {
+      daysOfWeek.forEach(el => noSchedule(el))
+    }
  
-      console.log(petSchedule)
+      console.log(monday)
       
     useEffect(() => {
       if (petSchedule !== undefined) {
         days()
+        // checkSchedule()
       }
       },[petSchedule]);
 
@@ -95,12 +118,12 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
     }
     
       function noAM(array) {
-       if (indexA(array) == -1) {
+       if (indexA(array) === -1) {
        let newArray = array.push(amObject)
-        return (newArray)
+        array = newArray
        } if (array === undefined) {
         let newArray = amObject
-        return (newArray)
+        array = newArray
        }else {
         console.log('am exists')
        }
