@@ -84,13 +84,7 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
       }
     }
 
-    function checkDay() {
-      console.log(petSchedule.filter(schedule => schedule.day === 1))
-    }
 
-    function checkSchedule() {
-      daysOfWeek.forEach(el => noSchedule(el))
-    }
  
       console.log(monday)
       

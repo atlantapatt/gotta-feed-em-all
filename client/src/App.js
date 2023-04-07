@@ -1,4 +1,6 @@
 import './App.css';
+import React, {useContext} from 'react';
+import { UserContext } from './Context/UserContext';
 import NavBar from './NavBar';
 import Schedules from './Schedules';
 import { Route, Switch, useHistory } from "react-router-dom"
@@ -13,7 +15,7 @@ import AddSchedule from './AddSchedule';
 import Account from './Account';
 
 function App() {
-  const [user, setUser] = useState(null)
+  // const [user, setUser] = useState(null)
   const [myPets, setMyPets] = useState([])
   const [newPet, setNewPet] = useState()
   const [url, setUrl] = useState('')
@@ -24,7 +26,7 @@ function App() {
   const [familyNames, setFamilyNames] = useState()
   const [famErrors, setFamErrors] = useState([])
 
-
+const {user, setUser} = useContext(UserContext)
 
   //set state to have a week pet schedule with everything filled but the name and ped id as null
 
