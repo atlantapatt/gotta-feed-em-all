@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   delete 'pet/:id', to: 'pets#destroy'
   delete 'user/:id', to: 'users#destroy'
+
+  get "pets/search/:term", to: 'pets#search_action'
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessible_entity
-
+    skip_before_action :authorized, only: :create
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id

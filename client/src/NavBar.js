@@ -18,11 +18,6 @@ function NavBar({family, user, setUser,setUrl, handleAddPet, setNewPet}) {
         history.push('/')
       }
 
-    function addPetRoute() {
-        let path = '/addpet'
-        history.push(path)
-        setOpen(false)
-    }
 
     function goHomeRoute() {
         let path = '/'

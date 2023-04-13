@@ -21,8 +21,13 @@ class FamiliesController < ApplicationController
     end
 
     def create
-        family = Family.create(family_params)
-        render json: family, status: :created
+        family = Family.create!(family_params)
+        if family
+            render json: family, status: :created
+        else 
+            render json: {errors: ["Requires Username and Password"]}, status: :unauthorized
+        end
+        
     end
 
     def fid

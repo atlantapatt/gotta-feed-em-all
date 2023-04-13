@@ -49,6 +49,16 @@ class PetsController < ApplicationController
         end
     end
 
+
+    def search_action
+        pet = Pet.where( "name LIKE ?", "%#{params[:term]}%")
+        if pet
+            render json: pet
+        else
+            render json: {errors: "Pet not fount"}
+        end
+    end
+
     private
 
     def pet_params

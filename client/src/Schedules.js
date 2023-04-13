@@ -90,6 +90,7 @@ function Schedules({onePet, petSchedule, setPetSchedule, petName, url, setUrl}) 
       
     useEffect(() => {
       if (petSchedule !== undefined) {
+        console.log('check')
         days()
         // checkSchedule()
       }
