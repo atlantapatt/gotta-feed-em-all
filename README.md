@@ -1,4 +1,4 @@
-# Phase 4 Project
+# Gotta Feed Em All /  Mutt Noodle
 
 ## Project Basis
 For my fourth Flatiron School Project, I've built a pet feeding schedule app using SQLite, Ruby, Ruby On Rails, and React. In the application, you log in to an account that is connected to a family account to add pets to your family. The pets can then have a schedule created for them to keep track of who feeds them each day in the morning or night. 
